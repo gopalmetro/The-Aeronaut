@@ -327,8 +327,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1050175899}
-  - {fileID: 577267075}
   - {fileID: 918775554}
+  - {fileID: 577267075}
   - {fileID: 1592974546}
   - {fileID: 1051853270}
   - {fileID: 93164211}
@@ -1266,7 +1266,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .600000024
-  m_Center: {x: 0, y: -.5}
+  m_Center: {x: 0, y: 0}
 --- !u!50 &1050175896
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -2004,10 +2004,6 @@ Prefab:
     - target: {fileID: 21200000, guid: 55b1fe8a91ab59a4c9f16ce385bfb194, type: 2}
       propertyPath: m_SortingOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800000, guid: 55b1fe8a91ab59a4c9f16ce385bfb194, type: 2}
-      propertyPath: m_Center.y
-      value: -.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55b1fe8a91ab59a4c9f16ce385bfb194, type: 2}
