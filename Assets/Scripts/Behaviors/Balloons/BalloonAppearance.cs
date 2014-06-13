@@ -23,7 +23,14 @@ public class BalloonAppearance : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (this.renderer.IsVisibleFrom(Camera.main))
+        {
+            isVisible = true;
+        }
+        else
+        {
+            isVisible = false;
+        }
 	}
 
     public void Destroy() {
@@ -39,23 +46,15 @@ public class BalloonAppearance : MonoBehaviour {
         CancelInvoke();
     }
 
-    public void OnBecameInvisible() {
-        //Invoke("Destroy", 0f);
-
-        isVisible = false;
-    }
-
-    public void OnBecameVisible() {
-        isVisible = true;
-    }
-
     public void OnCollisionEnter2D(Collision2D other) {
         var contact = other.contacts[0];
         if (contact.point.y < this.transform.position.y - .5f && other.gameObject.tag == "Player") {
             Invoke("Destroy", 0f);
+            Debug.Log("Yo");
         }
         if (other.gameObject.tag == "platform" && !isVisible) {
             Invoke("Destroy", 0f);
+            Debug.Log("ye");
         }
         if (other.gameObject.tag == "Player") {
             this.gameObject.GetComponent<Deflate>().playerCheck = true;
@@ -64,7 +63,7 @@ public class BalloonAppearance : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "platform" && !isVisible && !isGreen) {
-            Invoke("Destroy", 0f);
+            //Invoke("Destroy", 0f);
         }
     }
 }
