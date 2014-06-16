@@ -50,11 +50,9 @@ public class BalloonAppearance : MonoBehaviour {
         var contact = other.contacts[0];
         if (contact.point.y < this.transform.position.y - .5f && other.gameObject.tag == "Player") {
             Invoke("Destroy", 0f);
-            Debug.Log("Yo");
         }
         if (other.gameObject.tag == "platform" && !isVisible) {
             Invoke("Destroy", 0f);
-            Debug.Log("ye");
         }
         if (other.gameObject.tag == "Player") {
             this.gameObject.GetComponent<Deflate>().playerCheck = true;

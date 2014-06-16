@@ -13,7 +13,7 @@ public class BalloonSpawner : MonoBehaviour {
     private GameObject[] balloons;
     public int totalBalloons;
     public int timer;
-    public int spawntime = 25;
+    public int spawntime = 30;
     private int curBalloon = 0;
     private List<Vector2> BalloonCoord;
     private List<GameObject> SpawningBalloons;

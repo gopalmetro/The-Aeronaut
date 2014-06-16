@@ -16,6 +16,8 @@ public class PowerUpSpawner : MonoBehaviour {
     private GameObject[] powerUps;
     private float topBorder;
     private int curPowerup = 0;
+    private float Timer;
+    private float timeDelay = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +27,7 @@ public class PowerUpSpawner : MonoBehaviour {
 	}
 
     void Awake() {
+        Timer = Time.time + timeDelay;
         powerUps = new GameObject[powerUpPool];
         for (int i = 0; i < powerUps.Length; i++) {
             powerUps[i] = Instantiate(powerUp) as GameObject;
@@ -33,7 +36,7 @@ public class PowerUpSpawner : MonoBehaviour {
         }
     }
 
-    public GameObject getNextPowerUp() {
+    public GameObject getNextpowerUp() {
         lastPowerUp++;
         if (lastPowerUp > powerUpPool - 1) {
             lastPowerUp = 0;
@@ -43,17 +46,15 @@ public class PowerUpSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-      
+        if (Timer < Time.time) {
+            //GameObject powerup = Instantiate(powerUp) as GameObject;
+            GameObject powerup = getNextpowerUp();
+            powerup.SetActive(true);
+            powerup.transform.position = new Vector3(Random.Range(-10, 10), this.transform.position.y, this.transform.position.z);
+            Timer = Time.time + timeDelay;
+        }
         var dist = (player.transform.position - Camera.main.transform.position).z;
         topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, dist)).y;
         transform.position = new Vector3(camera.transform.position.x, topBorder + 5, dist);
-        //spawnPowerUps();
 	}
-
-
-    void spawnPowerUps() {
-        GameObject powerUp;
-        powerUp = getNextPowerUp();
-        powerUp.SetActive(true);
-    }
 }
