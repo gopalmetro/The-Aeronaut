@@ -50,7 +50,7 @@ public class PowerUpSpawner : MonoBehaviour {
             //GameObject powerup = Instantiate(powerUp) as GameObject;
             GameObject powerup = getNextpowerUp();
             powerup.SetActive(true);
-            powerup.transform.position = new Vector3(Random.Range(-10, 10), this.transform.position.y, this.transform.position.z);
+            powerup.transform.position = new Vector3(Random.Range(-10, 10), this.transform.position.y);
             Timer = Time.time + timeDelay;
         }
         var dist = (player.transform.position - Camera.main.transform.position).z;
