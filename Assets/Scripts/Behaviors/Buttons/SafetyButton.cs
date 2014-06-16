@@ -30,8 +30,8 @@ public class SafetyButton : MonoBehaviour {
         if (purpcount > 0) {
             Transform balloon;
             balloon = Instantiate(purpleballoon) as Transform;
-            Vector3 pos = balloon.transform.position;
-            pos.x = Player.transform.position.x;
+            Vector3 pos = Player.transform.position;
+            pos.y = Player.transform.position.y - 10;
             balloon.position = pos;
             balloon.transform.parent = transform.parent;
             purpcount--;

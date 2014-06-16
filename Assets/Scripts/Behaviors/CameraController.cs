@@ -23,8 +23,8 @@ public class CameraController : MonoBehaviour {
 
     private void LoadImages(List<Sprite> backgrounds) {
         for (int i = 1; i < 09; i++) {
-            string texture = "Assets/Resources/Textures/backgrounds/0" + i +".png";
-            Sprite texTmp = (Sprite)Resources.LoadAssetAtPath(texture, typeof(Sprite));
+            string texture = "Textures/backgrounds/0" + i;
+            Sprite texTmp = (Sprite)Resources.Load(texture, typeof(Sprite));
             backgrounds.Add(texTmp);
         }
     }

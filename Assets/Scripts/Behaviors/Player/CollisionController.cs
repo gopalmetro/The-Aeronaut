@@ -36,13 +36,13 @@ public class CollisionController : MonoBehaviour {
         Notification collision = new Notification(NotificationType.OnBalloonPlayerCollision, "Balloon Collided!");
      
         int i = 0;
-        bool temp = false;
+        check = false;
         while (i < hits.Length)  {
             Collider2D hit = hits[i];
             if (hit != null) {
                 if (hit.tag == "platform") {
                     NotificationCenter.defaultCenter.postNotification(collision);
-                    temp = true;
+                    check = true;
                 }
             }
             i++;
