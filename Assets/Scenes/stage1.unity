@@ -1362,6 +1362,7 @@ GameObject:
   - 95: {fileID: 1051853279}
   - 114: {fileID: 1051853274}
   - 114: {fileID: 1051853275}
+  - 114: {fileID: 1051853280}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -1376,7 +1377,7 @@ Transform:
   m_PrefabInternal: {fileID: 1706267045}
   m_GameObject: {fileID: 1051853269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0888280869, y: -4, z: 10}
+  m_LocalPosition: {x: .037257649, y: -6.57851791, z: 10}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 475918087}
@@ -1468,6 +1469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
+  isJumping: 0
 --- !u!114 &1051853277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,6 +1509,17 @@ Animator:
   m_ApplyRootMotion: 0
   m_AnimatePhysics: 1
   m_HasTransformHierarchy: 1
+--- !u!114 &1051853280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051853269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a06ef1dbc22ab64f961320dbbd7a84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1105958214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,11 +2062,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 9bb53139951f9584ca233480788ef759, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .0888280869
+      value: .037257649
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bb53139951f9584ca233480788ef759, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: -6.57851791
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9bb53139951f9584ca233480788ef759, type: 2}
       propertyPath: m_LocalPosition.z

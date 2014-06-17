@@ -15,6 +15,11 @@ public class CollisionController : MonoBehaviour {
 
     void Update() {
         this.checkForLoss();
+        if (this.rigidbody2D.velocity.y <= 5)
+        {
+            this.GetComponent<Jump>().isJumping = false;
+        }
+        Debug.Log(this.GetComponent<Jump>().isJumping);
     }
 
     bool check = true;
@@ -27,10 +32,8 @@ public class CollisionController : MonoBehaviour {
         float playerSize = this.renderer.bounds.size.y;
         Vector3 position1 = transform.position;
         Vector3 position2 = transform.position;
-        position1.x = position1.x - playerSize;
-        position1.y = position1.y;
         position2.x = position2.x + playerSize;
-        position2.y = position2.y - 2 * playerSize;
+        position2.y = position2.y - playerSize/2;
 
         Collider2D[] hits = Physics2D.OverlapAreaAll(new Vector2(position1.x, position1.y), new Vector2(position2.x, position2.y));
         Notification collision = new Notification(NotificationType.OnBalloonPlayerCollision, "Balloon Collided!");
@@ -42,7 +45,9 @@ public class CollisionController : MonoBehaviour {
             if (hit != null) {
                 if (hit.tag == "platform") {
                     NotificationCenter.defaultCenter.postNotification(collision);
-                    check = true;
+                    if (this.GetComponent<Jump>().isJumping == false) {
+                        check = true;
+                    }
                 }
             }
             i++;

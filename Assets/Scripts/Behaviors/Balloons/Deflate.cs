@@ -63,7 +63,5 @@ public class Deflate : MonoBehaviour {
             }
             NotificationCenter.defaultCenter.removeListener(playerCollision, NotificationType.OnBalloonPlayerCollision);
         }
-
-
     }
 }
