@@ -27,15 +27,11 @@ public class Jump : MonoBehaviour {
 
     public void xAxisMvmtRight() {
         transform.position += Vector3.right * playerSpeed * Time.deltaTime;
-        if (playerGrounded) {
-            //this.GetComponent<AnimationController>().facingRight();
-        }
+        this.GetComponent<AnimationController>().facingLeft(false);
     }
 
     public void xAxisMvmtLeft() {
         transform.position -= Vector3.right * playerSpeed * Time.deltaTime;
-        if (playerGrounded) {
-            //this.GetComponent<AnimationController>().facingLeft();
-        }
+        this.GetComponent<AnimationController>().facingLeft(true);
     }
 }
