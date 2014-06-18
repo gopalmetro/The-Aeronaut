@@ -41,7 +41,6 @@ public class BalloonAppearance : MonoBehaviour {
     public void Destroy() {
         Notification balloonPop = new Notification(NotificationType.BalloonPop, "Balloon Popped!");
         NotificationCenter.defaultCenter.postNotification(balloonPop);
-        this.GetComponent<Audio>().Reset();
         this.transform.localScale = originalScale;
         this.GetComponent<Deflate>().Reset();
         this.gameObject.SetActive(false);

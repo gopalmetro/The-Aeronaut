@@ -229,6 +229,49 @@ Transform:
   m_LocalScale: {x: 1, y: 1.04999995, z: 1}
   m_Children: []
   m_Father: {fileID: 614965800}
+--- !u!1 &816384289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 816384290}
+  - 114: {fileID: 816384291}
+  m_Layer: 0
+  m_Name: soundeffectslider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &816384290
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 816384289}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .12542057, y: -.807381511, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1647142939}
+--- !u!114 &816384291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 816384289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10911394c19398344a58af9fd110a68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GUISkin: {fileID: 11400000, guid: f2053886c536e5448ad78d56771a9a0b, type: 2}
+  background: {fileID: 2800000, guid: 2bcf655a0acc37240bd059f4dea1afb0, type: 3}
+  button: {fileID: 2800000, guid: 3260cd7e515640444806db6108361b0b, type: 3}
+  controller: Sound Effects
+  posY: -50
 --- !u!1 &963145063
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +381,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GUISkin: {fileID: 11400000, guid: 35369c0564307144ab9058be55dd13cb, type: 2}
   background: {fileID: 2800000, guid: 2bcf655a0acc37240bd059f4dea1afb0, type: 3}
+  button: {fileID: 2800000, guid: d6f6f08c1f6abcf4ab8318bd1a388ec4, type: 3}
+  controller: Background Music
+  posY: 50
 --- !u!1 &1342674160
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +550,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 816384290}
   - {fileID: 963145064}
   - {fileID: 1279545149}
   m_Father: {fileID: 1214980047}

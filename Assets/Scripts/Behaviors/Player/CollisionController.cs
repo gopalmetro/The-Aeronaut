@@ -19,7 +19,6 @@ public class CollisionController : MonoBehaviour {
         {
             this.GetComponent<Jump>().isJumping = false;
         }
-        Debug.Log(this.GetComponent<Jump>().isJumping);
     }
 
     bool check = true;

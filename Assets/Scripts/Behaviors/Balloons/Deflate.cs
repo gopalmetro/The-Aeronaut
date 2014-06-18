@@ -38,9 +38,6 @@ public class Deflate : MonoBehaviour {
             transform.localScale -= reduce;
         }
 
-        if (this.transform.localScale.y <= .2) {
-            this.GetComponent<Audio>().Sound();
-        }
         if(xcheck <= 0) {
             this.GetComponent<BalloonAppearance>().Destroy();
             this.deflateRate = originalDeflateRate;

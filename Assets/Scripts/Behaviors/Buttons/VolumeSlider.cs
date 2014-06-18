@@ -7,6 +7,8 @@ public class VolumeSlider : MonoBehaviour {
     public GUISkin GUISkin = null;
     public Texture2D background = null;
     public Texture2D button = null;
+    public string controller = null;
+    public float posY = 0f;
     private GUIStyle slider;
     private GUIStyle thumbnail;
 
@@ -19,8 +21,9 @@ public class VolumeSlider : MonoBehaviour {
             };
         thumbnail = new GUIStyle(GUISkin.horizontalSliderThumb)
             {
-                fixedHeight = button.height,
-                fixedWidth = button.width,
+                fixedHeight = button.height - button.width/4,
+                fixedWidth = button.width - button.width/4,
+                
             };
     }
 
@@ -28,9 +31,9 @@ public class VolumeSlider : MonoBehaviour {
         GUI.skin = GUISkin;
 
         GUI.skin.horizontalScrollbar.fixedWidth = 200;
-        hSliderValue = GUI.HorizontalSlider (new Rect (Screen.width/2 - background.width/4, Screen.height/4, background.width/2, background.height),hSliderValue, 0, 1.0f, slider, thumbnail);
+        hSliderValue = GUI.HorizontalSlider (new Rect (Screen.width/2 - background.width/4, Screen.height/4 - posY, background.width/2, background.height),hSliderValue, 0, 1.0f, slider, thumbnail);
         if (GameObject.Find("Sounds") != null) {
-            GameObject aud = GameObject.Find("Background Music");
+            GameObject aud = GameObject.Find(controller);
             aud.GetComponent<AudioSource>().volume = hSliderValue;
         }
     }﻿
