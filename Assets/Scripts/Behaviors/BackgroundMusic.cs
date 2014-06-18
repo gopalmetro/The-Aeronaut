@@ -11,4 +11,8 @@ public class BackgroundMusic : MonoBehaviour {
             audio.Play();
         }
     }
+
+    void Update() {
+        this.transform.position = Camera.main.transform.position;
+    }
 }
