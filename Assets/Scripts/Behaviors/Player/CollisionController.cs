@@ -72,5 +72,4 @@ public class CollisionController : MonoBehaviour {
             Application.LoadLevel("losescreen");
         }
     }
-
 }

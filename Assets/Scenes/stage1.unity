@@ -460,11 +460,9 @@ GameObject:
   - 58: {fileID: 577267073}
   - 50: {fileID: 577267072}
   - 58: {fileID: 577267071}
-  - 82: {fileID: 577267070}
   - 114: {fileID: 577267069}
   - 114: {fileID: 577267068}
   - 114: {fileID: 577267067}
-  - 114: {fileID: 577267066}
   m_Layer: 0
   m_Name: balloon 1
   m_TagString: platform
@@ -472,19 +470,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &577267066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 615146511}
-  m_GameObject: {fileID: 577267065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef38b35fc813e84f8345be7fb4668d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pop: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
 --- !u!114 &577267067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,65 +516,6 @@ MonoBehaviour:
   hasBecomeVisible: 0
   curSprite: {fileID: 21300000, guid: 797471d7214fc564fa54533c6fb28d3c, type: 3}
   isGreen: 0
---- !u!82 &577267070
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8200000, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 615146511}
-  m_GameObject: {fileID: 577267065}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!58 &577267071
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -923,11 +849,9 @@ GameObject:
   - 58: {fileID: 918775562}
   - 50: {fileID: 918775561}
   - 58: {fileID: 918775560}
-  - 82: {fileID: 918775559}
   - 114: {fileID: 918775558}
   - 114: {fileID: 918775557}
   - 114: {fileID: 918775556}
-  - 114: {fileID: 918775555}
   m_Layer: 0
   m_Name: balloon 1
   m_TagString: platform
@@ -946,19 +870,6 @@ Transform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1}
   m_Children: []
   m_Father: {fileID: 475918087}
---- !u!114 &918775555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 478053612}
-  m_GameObject: {fileID: 918775553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef38b35fc813e84f8345be7fb4668d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pop: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
 --- !u!114 &918775556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,65 +916,6 @@ MonoBehaviour:
   hasBecomeVisible: 0
   curSprite: {fileID: 21300000, guid: 797471d7214fc564fa54533c6fb28d3c, type: 3}
   isGreen: 0
---- !u!82 &918775559
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8200000, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 478053612}
-  m_GameObject: {fileID: 918775553}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!58 &918775560
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1140,11 +992,9 @@ GameObject:
   - 58: {fileID: 1050175897}
   - 50: {fileID: 1050175896}
   - 58: {fileID: 1050175895}
-  - 82: {fileID: 1050175894}
   - 114: {fileID: 1050175893}
   - 114: {fileID: 1050175892}
   - 114: {fileID: 1050175891}
-  - 114: {fileID: 1050175890}
   m_Layer: 0
   m_Name: balloon
   m_TagString: platform
@@ -1152,19 +1002,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1050175890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 1648608418}
-  m_GameObject: {fileID: 1050175889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef38b35fc813e84f8345be7fb4668d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pop: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
 --- !u!114 &1050175891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,65 +1048,6 @@ MonoBehaviour:
   hasBecomeVisible: 0
   curSprite: {fileID: 21300000, guid: 797471d7214fc564fa54533c6fb28d3c, type: 3}
   isGreen: 0
---- !u!82 &1050175894
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8200000, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 1648608418}
-  m_GameObject: {fileID: 1050175889}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!58 &1050175895
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1737,11 +1515,9 @@ GameObject:
   - 58: {fileID: 1592974554}
   - 50: {fileID: 1592974553}
   - 58: {fileID: 1592974552}
-  - 82: {fileID: 1592974551}
   - 114: {fileID: 1592974550}
   - 114: {fileID: 1592974549}
   - 114: {fileID: 1592974548}
-  - 114: {fileID: 1592974547}
   m_Layer: 0
   m_Name: balloon 2
   m_TagString: platform
@@ -1760,19 +1536,6 @@ Transform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1}
   m_Children: []
   m_Father: {fileID: 475918087}
---- !u!114 &1592974547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 1885095143}
-  m_GameObject: {fileID: 1592974545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef38b35fc813e84f8345be7fb4668d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pop: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
 --- !u!114 &1592974548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1819,65 +1582,6 @@ MonoBehaviour:
   hasBecomeVisible: 0
   curSprite: {fileID: 21300000, guid: 797471d7214fc564fa54533c6fb28d3c, type: 3}
   isGreen: 0
---- !u!82 &1592974551
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8200000, guid: 55b1fe8a91ab59a4c9f16ce385bfb194,
-    type: 2}
-  m_PrefabInternal: {fileID: 1885095143}
-  m_GameObject: {fileID: 1592974545}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!58 &1592974552
 CircleCollider2D:
   m_ObjectHideFlags: 0

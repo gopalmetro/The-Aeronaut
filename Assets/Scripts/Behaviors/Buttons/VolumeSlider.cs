@@ -27,6 +27,13 @@ public class VolumeSlider : MonoBehaviour {
             };
     }
 
+    void Awake() {
+        if (GameObject.Find("Sounds") != null) {
+            Debug.Log("Ey");
+            hSliderValue = GameObject.Find(controller).GetComponent<AudioSource>().volume;
+        }
+    }
+
     void OnGUI() {
         GUI.skin = GUISkin;
 

@@ -8,6 +8,7 @@ public enum NotificationType
     OnPowerUp,
     OnAchievableEvent,
     BalloonPop,
+    PlayerDeath,
     TotalNotifications
 };
 

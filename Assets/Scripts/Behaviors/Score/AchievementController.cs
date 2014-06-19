@@ -7,6 +7,7 @@ public class AchievementController : MonoBehaviour {
 
     private static AchievementController scoreManager = null;
     private int score = 0;
+    private int highScore = PlayerPrefs.GetInt("Score");
     private int messageTimer;
     private bool messageIsVisible;
 
@@ -22,6 +23,7 @@ public class AchievementController : MonoBehaviour {
             messageTimer = 0;
             setMessageInvisible();
         }
+        checkForNewHighScore();
     }
 
     public static AchievementController getInstance() {
@@ -59,10 +61,27 @@ public class AchievementController : MonoBehaviour {
         messageIsVisible = false;
     }
 
+    public void checkForNewHighScore() {
+        if (PlayerPrefs.GetInt("Score") == null) {
+            PlayerPrefs.SetInt("Score", 0);
+        }
+        if (PlayerPrefs.GetInt("Score") < this.score) {
+            PlayerPrefs.SetInt("Score", this.score);
+        }
+    }
+
+    public int returnHighScore() {
+        if (PlayerPrefs.GetInt("Score") == null) {
+            return 0;
+        } 
+        return PlayerPrefs.GetInt("Score");
+    }
+
     public void onReceiveMessageSetMessageVisible(Notification note)
     {
         setMessageVisible();
     }
+
 }
 
 /* 

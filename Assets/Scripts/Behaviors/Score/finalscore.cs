@@ -3,15 +3,13 @@ using System.Collections;
 
 public class finalscore : MonoBehaviour {
 
-    public scoretext scoretext;
-
 	// Use this for initialization
-	void Start () {
-        scoretext = GameObject.Find("Score").GetComponent<scoretext>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        Debug.Log(scoretext.getScore());
+	void Awake () {
+        if (PlayerPrefs.GetInt("Score") != null) {
+            this.guiText.text = PlayerPrefs.GetInt("Score") + "";
+        }
+        else {
+            this.guiText.text = "0";
+        }
 	}
 }
