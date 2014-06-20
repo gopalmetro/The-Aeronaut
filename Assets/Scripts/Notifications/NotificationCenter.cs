@@ -9,6 +9,7 @@ public enum NotificationType
     OnAchievableEvent,
     BalloonPop,
     PlayerDeath,
+    BackgroundObjectNotification,
     TotalNotifications
 };
 

@@ -25,7 +25,6 @@ public class AnimationController : MonoBehaviour {
         isLeft = yes;
     }
     public void jumpAnimation() {
-        Debug.Log(isLeft);
         if (isLeft) {
             animator.SetInteger("Direction", 1);
         }
