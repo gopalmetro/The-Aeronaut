@@ -23,17 +23,14 @@ public class BalloonAppearance : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (this.renderer.IsVisibleFrom(Camera.main))
-        {
+        if (this.renderer.IsVisibleFrom(Camera.main)) {
             isVisible = true;
         }
-        else
-        {
+        else {
             isVisible = false;
         }
 
-        if (this.transform.localScale.x < .2 && !isVisible)
-        {
+        if (this.transform.localScale.x < .2 && !isVisible) {
             Destroy();
         }
 	}
