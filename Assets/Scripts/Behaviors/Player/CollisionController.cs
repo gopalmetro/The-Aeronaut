@@ -4,7 +4,6 @@ using System.Collections;
 public class CollisionController : MonoBehaviour {
 
     public float newDeflateRate = .006f;
-    private bool lose = false;
     private GameObject cam;
 
     void Start() {

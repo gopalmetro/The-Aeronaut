@@ -14,9 +14,14 @@ public class BackgroundController : MonoBehaviour {
         backgrounds = new List<Sprite>();
         backgroundParts = new List<GameObject>();
         LoadImages(backgrounds);
-        for (int i = 0; i < 3; i++) {
+
+        for (int i = 0; i <= 2; i++) {
+
             GameObject newBackground = Instantiate(backgroundPrefab) as GameObject;
-            newBackground.GetComponent<Background>().setSprite(backgrounds[i]);
+		
+
+			newBackground.GetComponent<Background>().setSprite(backgrounds[i]);
+		
             newBackground.transform.parent = this.transform;
             newBackground.GetComponent<Background>().setIndex(i);
             newBackground.GetComponent<Background>().setID((char)(i + 70));
@@ -32,16 +37,20 @@ public class BackgroundController : MonoBehaviour {
         int currentIndex = currentBackground.getIndex();
 
         foreach (GameObject a in backgroundParts) {
-            if (a.GetComponent<Background>().id != currentBackground.id){
+            
+			if (a.GetComponent<Background>().id != currentBackground.id){
                 a.GetComponent<Background>().isCenter = false;
                 tempBackgroundParts.Add(a);
             }
         }
-        tempBackgroundParts[0].GetComponent<Background>().setIndex(currentIndex - 1);
+
         tempBackgroundParts[1].GetComponent<Background>().setIndex(currentIndex + 1); 
-        tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex - 1]);
-        tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex + 1]);
-        
+		tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex + 1]);
+
+		if (currentIndex - 1 > 0) {
+			tempBackgroundParts [0].GetComponent<Background> ().setIndex (currentIndex - 1);
+			tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [currentIndex - 1]);
+		}
     }
 
     private void BubbleSort()

@@ -15,8 +15,8 @@ public class Controls : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && this.GetComponent<Jump>().isGrounded()) { 
             this.GetComponent<Jump>().playerJump();
         }
-        if (screenPoint.origin.x < transform.position.x) { this.GetComponent<Jump>().xAxisMvmtLeft(); }
-        if (screenPoint.origin.x > transform.position.x) { this.GetComponent<Jump>().xAxisMvmtRight(); }
+        //if (screenPoint.origin.x < transform.position.x) { this.GetComponent<Jump>().xAxisMvmtLeft(); }
+        //if (screenPoint.origin.x > transform.position.x) { this.GetComponent<Jump>().xAxisMvmtRight(); }
     }
 
     void iOSControls() {

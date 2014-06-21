@@ -14,7 +14,7 @@ public class Background : MonoBehaviour {
         Player = GameObject.Find("player");
         this.GetComponent<SpriteRenderer>().sprite = curSprite;
         this.transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y * 1.5f, this.transform.localScale.z);
-    }
+	}
 
     public void setIndex(int ind) {
         this.index = ind;
@@ -45,6 +45,7 @@ public class Background : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (!isCenter && other.gameObject.tag == "Player") {
+
             BackgroundNotification note = new BackgroundNotification(NotificationType.BackgroundObjectNotification, this.gameObject);
             NotificationCenter.defaultCenter.postNotification(note);
             isCenter = true;
