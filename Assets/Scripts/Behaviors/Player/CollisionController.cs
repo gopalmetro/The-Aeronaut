@@ -23,6 +23,7 @@ public class CollisionController : MonoBehaviour {
     }
 
     void checkIfOnBalloon() {
+
         float playerSize = this.renderer.bounds.size.y;
         Vector3 position1 = transform.position;
         Vector3 position2 = transform.position;
@@ -39,6 +40,7 @@ public class CollisionController : MonoBehaviour {
                 if (hit.tag == "platform") {
                     NotificationCenter.defaultCenter.postNotification(collision);
                     this.GetComponent<Jump>().setGrounded(true);
+					Debug.Log ("now grounded is true");
                 }
             }
             i++;
