@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 106995916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.5317802, y: 11.3291607, z: 9}
+  m_LocalPosition: {x: .562770367, y: 36.5495796, z: 9}
   m_LocalScale: {x: 1.3949188, y: 1.6031841, z: 1}
   m_Children: []
   m_Father: {fileID: 1862826742}
@@ -294,11 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44952cb12625a494b91e2692ac2545bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1.5, y: 1.5}
-  direction: {x: 0, y: -1}
-  isLinkedToCamera: 0
-  isLooping: 0
-  isParallaxing: 0
 --- !u!1 &475918086
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,11 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44952cb12625a494b91e2692ac2545bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1, y: 1}
-  direction: {x: 0, y: 1}
-  isLinkedToCamera: 1
-  isLooping: 0
-  isParallaxing: 0
 --- !u!1001 &478053612
 Prefab:
   m_ObjectHideFlags: 0
@@ -1312,11 +1302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44952cb12625a494b91e2692ac2545bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1, y: 1}
-  direction: {x: 0, y: -1}
-  isLinkedToCamera: 0
-  isLooping: 1
-  isParallaxing: 0
 --- !u!114 &1237381240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,11 +1760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44952cb12625a494b91e2692ac2545bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: .5, y: 1.5}
-  direction: {x: 0, y: -1}
-  isLinkedToCamera: 0
-  isLooping: 0
-  isParallaxing: 0
 --- !u!1001 &1885095143
 Prefab:
   m_ObjectHideFlags: 0

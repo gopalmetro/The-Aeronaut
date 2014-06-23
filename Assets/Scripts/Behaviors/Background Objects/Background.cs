@@ -38,7 +38,6 @@ public class Background : MonoBehaviour {
     }
 
     public void setColliderBounds() {
-        Debug.Log(Player.renderer.bounds.size);
         this.GetComponent<BoxCollider2D>().size = new Vector2(this.GetComponent<SpriteRenderer>().sprite.bounds.size.x,
             this.GetComponent<SpriteRenderer>().sprite.bounds.size.y - Player.renderer.bounds.size.y);
     }

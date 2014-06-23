@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Notification : MonoBehaviour {
+public class Notification {
 
     public NotificationType type;
     public object userInfo;
