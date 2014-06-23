@@ -12,30 +12,27 @@ public class AnimationController : MonoBehaviour {
     }
 
     void Update() {
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("jumpleft") && this.GetComponent<Jump>().isGrounded()) {
-            animator.SetInteger("Direction", 0);
-        }
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("jumpright") && this.GetComponent<Jump>().isGrounded())
-        {
+        if (this.GetComponent<Jump>().isGrounded()) {
             animator.SetInteger("Direction", 0);
         }
     }
 
-    public void facingLeft(bool yes) {
-        isLeft = yes;
-    }
-    public void jumpAnimation() {
-        if (isLeft) {
-            animator.SetInteger("Direction", 1);
-        }
-        else {
-            animator.SetInteger("Direction", 2);
-        }
-    }
+	public void faceCenter() {
+		Debug.Log ("CENTER");
+		animator.SetInteger ("Direction", 0);
+	}
 
-    public void facingRight(){
-        //animator.SetInteger("Direction", 2);
-    }
+
+	public void faceLeft() {
+		Debug.Log ("LEFT");
+		animator.SetInteger ("Direction", 1);
+	}
+	
+	public void faceRight() {
+		Debug.Log ("right");
+		animator.SetInteger ("Direction", 2);
+	}
+
 
 
 }

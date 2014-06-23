@@ -16,20 +16,22 @@ public class Jump : MonoBehaviour {
     public void playerJump() {
 		if (isGrounded()) {
             rigidbody2D.AddForce(new Vector2(0, playerJumpHeight));
-            this.GetComponent<AnimationController>().jumpAnimation();
             setGrounded(false);
         }
     }
 
     public void xAxisMvmtRight() {
         transform.position += Vector3.right * playerSpeed * Time.deltaTime;
-        this.GetComponent<AnimationController>().facingLeft(false);
+		this.GetComponent<AnimationController>().faceRight();
     }
 
     public void xAxisMvmtLeft() {
         transform.position -= Vector3.right * playerSpeed * Time.deltaTime;
-        this.GetComponent<AnimationController>().facingLeft(true);
+        this.GetComponent<AnimationController>().faceLeft();
     }
+	public void rest() {
+		this.GetComponent<AnimationController>().faceCenter();
+	}
 
 	public bool isGrounded() {
 		
@@ -48,7 +50,6 @@ public class Jump : MonoBehaviour {
 			if (hit != null) {
 				if (hit.tag == "platform") {
 					NotificationCenter.defaultCenter.postNotification(collision);
-					Debug.Log ("now grounded is true");
 					return true;
 				}
 			}
