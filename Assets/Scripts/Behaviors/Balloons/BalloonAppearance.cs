@@ -62,7 +62,7 @@ public class BalloonAppearance : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "platform" && !isVisible && !isGreen) {
-            //Invoke("Destroy", 0f);
+            Invoke("Destroy", 0f);
         }
     }
 }
