@@ -3,33 +3,21 @@ using System.Collections;
 
 public class AnimationController : MonoBehaviour {
     
-    
-    private Animator animator;
-    private bool isLeft = true;
+	private Animator animator;
 
-    void Start() {
-        animator = this.GetComponent<Animator>();
-    }
+	void Start () {
+		animator = this.GetComponent<Animator> ();
+	}
 
-    void Update() {
-        if (this.GetComponent<Jump>().isGrounded()) {
-            animator.SetInteger("Direction", 0);
-        }
-    }
-
-	public void faceCenter() {
-		Debug.Log ("CENTER");
+	public void faceCenter () {
 		animator.SetInteger ("Direction", 0);
 	}
 
-
-	public void faceLeft() {
-		Debug.Log ("LEFT");
+	public void faceLeft () {
 		animator.SetInteger ("Direction", 1);
 	}
 	
-	public void faceRight() {
-		Debug.Log ("right");
+	public void faceRight () {
 		animator.SetInteger ("Direction", 2);
 	}
 
