@@ -14,10 +14,6 @@ public class CollisionController : MonoBehaviour {
 
     void Update() {
         this.checkForLoss();
-        if (this.rigidbody2D.velocity.y <= 5)
-        {
-            this.GetComponent<Jump>().isJumping = false;
-        }
     }
 
     bool check = true;
@@ -37,20 +33,16 @@ public class CollisionController : MonoBehaviour {
         Notification collision = new Notification(NotificationType.OnBalloonPlayerCollision, "Balloon Collided!");
      
         int i = 0;
-        check = false;
         while (i < hits.Length)  {
             Collider2D hit = hits[i];
             if (hit != null) {
                 if (hit.tag == "platform") {
                     NotificationCenter.defaultCenter.postNotification(collision);
-                    if (this.GetComponent<Jump>().isJumping == false) {
-                        check = true;
-                    }
+                    this.GetComponent<Jump>().setGrounded(true);
                 }
             }
             i++;
         }
-        this.GetComponent<Jump>().setGrounded(check);
     }
 
     void checkIfOutOfBounds() {

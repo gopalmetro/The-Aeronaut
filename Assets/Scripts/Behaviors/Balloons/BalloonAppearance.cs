@@ -47,6 +47,8 @@ public class BalloonAppearance : MonoBehaviour {
         CancelInvoke();
     }
 
+
+
     public void OnCollisionEnter2D(Collision2D other) {
         var contact = other.contacts[0];
         if (contact.point.y < this.transform.position.y - .5f && other.gameObject.tag == "Player") {

@@ -15,6 +15,5 @@ public class SoundEffectController : MonoBehaviour {
 	// Update is called once per frame
 	void BalloonPopSoundEffect(Notification note){
         audio.PlayOneShot(pop);
-        Debug.Log("I popped");
 	}
 }

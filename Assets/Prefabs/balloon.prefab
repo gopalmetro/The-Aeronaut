@@ -15,7 +15,6 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: balloon
   m_TagString: platform
@@ -172,18 +171,6 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   floatingConst: 4
   accel: 0
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef38b35fc813e84f8345be7fb4668d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pop: {fileID: 8300000, guid: 86e10e00cedbe1a4ca9463f7d5bdf673, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

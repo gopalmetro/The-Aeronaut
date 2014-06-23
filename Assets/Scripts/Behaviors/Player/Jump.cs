@@ -4,7 +4,6 @@ using System.Collections;
 public class Jump : MonoBehaviour {
 
     public float playerSpeed = 5;
-    public bool isJumping = false;
     private bool playerGrounded = true;
     private int playerJumpHeight = 500;
 
@@ -18,10 +17,10 @@ public class Jump : MonoBehaviour {
         playerGrounded = ground;
     }
     public void playerJump() {
-        if (playerGrounded && !isJumping) {
+        if (playerGrounded) {
             rigidbody2D.AddForce(new Vector2(0, playerJumpHeight));
             this.GetComponent<AnimationController>().jumpAnimation();
-            isJumping = true;
+            setGrounded(false);
         }
     }
 

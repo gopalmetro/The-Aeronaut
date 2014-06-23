@@ -1120,7 +1120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  isJumping: 0
 --- !u!114 &1051853277
 MonoBehaviour:
   m_ObjectHideFlags: 0
