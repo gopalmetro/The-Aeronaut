@@ -7,6 +7,7 @@ public class Background : MonoBehaviour {
     public bool isCenter = false;
     public char id;
     private int index = 0;
+    private int height = 0;
     private Sprite curSprite;
     private GameObject Player;
 
@@ -18,7 +19,15 @@ public class Background : MonoBehaviour {
 
     public void setIndex(int ind) {
         this.index = ind;
-        this.transform.position = new Vector3(this.transform.position.x, ind * getHeight(), 10);//anchor at 0.5
+    }
+
+    public void setHeight(int h) {
+        height = h;
+        this.transform.position = new Vector3(this.transform.position.x, h * getRendererHeight(), 10); //anchor at 0.5
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public int getIndex() {
@@ -33,7 +42,7 @@ public class Background : MonoBehaviour {
         this.GetComponent<SpriteRenderer>().sprite = newSprite;
     }
 
-    public float getHeight() {
+    public float getRendererHeight() {
         return this.renderer.bounds.size.y;
     }
 

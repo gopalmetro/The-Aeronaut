@@ -7,6 +7,7 @@ public class BackgroundController : MonoBehaviour {
     public GameObject backgroundPrefab;
     private List<Sprite> backgrounds;
     private List<GameObject> backgroundParts;
+    private int heightToBeginTransition = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -20,10 +21,11 @@ public class BackgroundController : MonoBehaviour {
             GameObject newBackground = Instantiate(backgroundPrefab) as GameObject;
 		
 
-			newBackground.GetComponent<Background>().setSprite(backgrounds[i]);
+			newBackground.GetComponent<Background>().setSprite(backgrounds[0]);
 		
             newBackground.transform.parent = this.transform;
-            newBackground.GetComponent<Background>().setIndex(i);
+            newBackground.GetComponent<Background>().setIndex(0);
+            newBackground.GetComponent<Background>().setHeight(i);
             newBackground.GetComponent<Background>().setID((char)(i + 70));
             newBackground.GetComponent<Background>().setColliderBounds();
             backgroundParts.Add(newBackground);
@@ -35,7 +37,7 @@ public class BackgroundController : MonoBehaviour {
         Background currentBackground = current.gameObj.GetComponent<Background>();
         List<GameObject> tempBackgroundParts = new List<GameObject>();
         int currentIndex = currentBackground.getIndex();
-
+        int currentHeight = currentBackground.getHeight();
         foreach (GameObject a in backgroundParts) {
             
 			if (a.GetComponent<Background>().id != currentBackground.id){
@@ -44,45 +46,38 @@ public class BackgroundController : MonoBehaviour {
             }
         }
 
-        tempBackgroundParts[1].GetComponent<Background>().setIndex(currentIndex + 1); 
-		tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex + 1]);
+        if (currentHeight < heightToBeginTransition)
+        {
+            tempBackgroundParts[1].GetComponent<Background>().setIndex(0);
+            tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
+            tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
 
-		if (currentIndex - 1 > 0) {
-			tempBackgroundParts [0].GetComponent<Background> ().setIndex (currentIndex - 1);
-			tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [currentIndex - 1]);
-		}
-    }
 
-    private void BubbleSort()
-    {
-        int length = backgroundParts.Count;
-
-        GameObject temp = backgroundParts[0];
-
-        for (int i = 0; i < length; i++) {
-            for (int j = i + 1; j < length; j++) {
-                if (backgroundParts[i].transform.position.y > backgroundParts[j].transform.position.y) {
-                    temp = backgroundParts[i];
-
-                    backgroundParts[i] = backgroundParts[j];
-
-                    backgroundParts[j] = temp;
-                }
+            if (currentHeight - 1 > 0)
+            {
+                tempBackgroundParts[0].GetComponent<Background>().setIndex(0);
+                tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
+                tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
             }
+        }
+        else
+        {
+            tempBackgroundParts[1].GetComponent<Background>().setIndex(currentIndex + 1);
+            tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex + 1]);
+            tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
+            tempBackgroundParts[0].GetComponent<Background>().setIndex(currentIndex - 1);
+            tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex - 1]);
+            tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
+
         }
     }
 
-    private void LoadImages(List<Sprite> backgrounds)
-    {
+
+    private void LoadImages(List<Sprite> backgrounds) {
         for (int i = 1; i < 09; i++) {
             string texture = "Textures/backgrounds/0" + i;
             Sprite texTmp = (Sprite)Resources.Load(texture, typeof(Sprite));
             backgrounds.Add(texTmp);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
