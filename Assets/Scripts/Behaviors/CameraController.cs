@@ -12,16 +12,11 @@ public class CameraController : MonoBehaviour {
 	void Start() {
 		Cam = GameObject.Find("Main Camera");
 		Player = GameObject.Find("player");
-        NotificationCenter.defaultCenter.addListener(playerLoss, NotificationType.PlayerDeath);
 	}
 
 	void Update () {
         if (!loss) {
             Cam.transform.position = new Vector3(Cam.transform.position.x, Player.transform.position.y, Cam.transform.position.z);
         }
-    }
-
-    void playerLoss(Notification note){
-        loss = true;
     }
 }

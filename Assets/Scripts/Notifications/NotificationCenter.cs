@@ -6,7 +6,6 @@ public enum NotificationType {
 	OnPowerUp,
 	OnAchievableEvent,
 	BalloonPop,
-	PlayerDeath,
 	BackgroundObjectNotification,
 	TotalNotifications
 }

@@ -13,11 +13,6 @@ public class CollisionController : MonoBehaviour {
 		DontDestroyOnLoad (this);
 
 	}
-
-	void Update () {
-		this.checkForLoss ();
-	}
-
 	void FixedUpdate () {
 		checkIfOutOfBounds ();
 	}
@@ -37,11 +32,5 @@ public class CollisionController : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -30);
 		}
 				
-	}
-
-	void checkForLoss () {
-		if (transform.position.y <= cam.transform.position.y - 10) {
-			Application.LoadLevel ("losescreen");
-		}
 	}
 }
