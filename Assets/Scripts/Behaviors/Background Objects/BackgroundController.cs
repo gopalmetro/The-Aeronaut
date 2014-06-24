@@ -53,7 +53,7 @@ public class BackgroundController : MonoBehaviour {
             tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
 
 
-            if (currentHeight - 1 > 0)
+            if (currentHeight > 0)
             {
                 tempBackgroundParts[0].GetComponent<Background>().setIndex(0);
                 tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
