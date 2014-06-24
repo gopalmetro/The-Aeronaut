@@ -7,12 +7,13 @@ public class AchievementController : MonoBehaviour {
 
     private static AchievementController scoreManager = null;
     private int score = 0;
-    private int highScore = PlayerPrefs.GetInt("Score");
+    private int highScore;
     private int messageTimer;
     private bool messageIsVisible;
 
     void Start() {
         DontDestroyOnLoad(this);
+        highScore = PlayerPrefs.GetInt("Score");
         messageTimer = 0;
         NotificationCenter.defaultCenter.addListener(onReceiveMessageSetMessageVisible, NotificationType.OnAchievableEvent);
     }
