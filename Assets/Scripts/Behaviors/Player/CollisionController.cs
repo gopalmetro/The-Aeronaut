@@ -39,16 +39,12 @@ public class CollisionController : MonoBehaviour {
 		position2.y = position2.y - playerSize / 2;
 
 		Collider2D[] hits = Physics2D.OverlapAreaAll (new Vector2 (position1.x, position1.y), new Vector2 (position2.x, position2.y));
-		Notification collision = new Notification (NotificationType.OnBalloonPlayerCollision, "Balloon Collided!");
 		
 		int i = 0;
 		while (i < hits.Length) {
 			Collider2D hit = hits [i];
 			if (hit != null) {
 				if (hit.tag == "platform") {
-					if(!isGrounded) {
-						NotificationCenter.defaultCenter.postNotification (collision);
-					}
 					isGrounded = true;
 					return;
 				}

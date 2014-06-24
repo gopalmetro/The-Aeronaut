@@ -2,7 +2,6 @@
 using System.Collections;
 
 public enum NotificationType {
-	OnBalloonPlayerCollision,
 	OnEvent,
 	OnPowerUp,
 	OnAchievableEvent,
@@ -15,6 +14,7 @@ public enum NotificationType {
 
 public delegate void OnNotificationDelegate (Notification note);
 
+//Assistance from: http://www.developermemo.com/2362547/
 // Usage:
 // NotificationCenter.defaultCenter.addListener( onNotification );
 // NotificationCenter.defaultCenter.sendNotification( new Notification( NotificationTypes.OnStuff, this ) );

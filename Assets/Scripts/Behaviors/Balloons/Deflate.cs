@@ -18,13 +18,34 @@ public class Deflate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         originalDeflateRate = this.deflateRate;
-        NotificationCenter.defaultCenter.addListener(playerCollision, NotificationType.OnBalloonPlayerCollision);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         deflate();
+        playerCollision();
 	}
+
+    void playerCollision()
+    {
+        if (playerCheck)
+        {
+            this.deflateRate = collisionDeflateRate;
+            Float balloonFloat = this.gameObject.GetComponent<Float>();
+            Deflate balloonDeflate = this.gameObject.GetComponent<Deflate>();
+            BalloonAppearance balloonApp = this.gameObject.GetComponent<BalloonAppearance>();
+            if (!balloonApp.isGreen)
+            {
+                balloonFloat.setSpeed(new Vector2(0, 20f));
+            }
+            else
+            {
+                Notification achievement = new Notification(NotificationType.OnAchievableEvent, "On Green Balloon!");
+                balloonFloat.setSpeed(new Vector2(0, 25f));
+                NotificationCenter.defaultCenter.postNotification(achievement);
+            }
+        }
+    }
 
     public void Reset() {
         this.deflateRate = originalDeflateRate;
@@ -44,21 +65,4 @@ public class Deflate : MonoBehaviour {
         }
     }
 
-    void playerCollision(Notification Note){
-        if (playerCheck) {
-			this.deflateRate = collisionDeflateRate;
-            Float balloonFloat = this.gameObject.GetComponent<Float>();
-            Deflate balloonDeflate = this.gameObject.GetComponent<Deflate>();
-            BalloonAppearance balloonApp = this.gameObject.GetComponent<BalloonAppearance>();
-            if (!balloonApp.isGreen) {
-                balloonFloat.setSpeed(new Vector2(0, 20f));
-            }
-            else {
-                Notification achievement = new Notification(NotificationType.OnAchievableEvent, "On Green Balloon!");
-                balloonFloat.setSpeed(new Vector2(0, 25f));
-                NotificationCenter.defaultCenter.postNotification(achievement);
-            }
-            NotificationCenter.defaultCenter.removeListener(playerCollision, NotificationType.OnBalloonPlayerCollision);
-        }
-    }
 }

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20829c66b9d5db40bd33450c375f1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deflateRate: 0
+  deflateRate: 9.99999975e-05
   playerCheck: 0
 --- !u!114 &11400004
 MonoBehaviour:
