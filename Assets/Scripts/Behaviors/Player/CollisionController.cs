@@ -15,8 +15,6 @@ public class CollisionController : MonoBehaviour {
 	}
 
 	void Update () {
-		checkIfOnBalloon ();
-
 		this.checkForLoss ();
 	}
 
@@ -24,35 +22,6 @@ public class CollisionController : MonoBehaviour {
 
 	void FixedUpdate () {
 		checkIfOutOfBounds ();
-	}
-
-	void checkIfOnBalloon () {
-
-		float playerSize = this.renderer.bounds.size.y;
-		Vector3 position1 = transform.position;
-		Vector3 position2 = transform.position;
-
-		position1.x = position1.x - playerSize;
-		position1.y = position1.y + playerSize / 2;
-		
-		position2.x = position2.x + playerSize;
-		position2.y = position2.y - playerSize / 2;
-
-		Collider2D[] hits = Physics2D.OverlapAreaAll (new Vector2 (position1.x, position1.y), new Vector2 (position2.x, position2.y));
-		
-		int i = 0;
-		while (i < hits.Length) {
-			Collider2D hit = hits [i];
-			if (hit != null) {
-				if (hit.tag == "platform") {
-					isGrounded = true;
-					return;
-				}
-			}
-			i++;
-		}
-		isGrounded = false;
-
 	}
 
 	void checkIfOutOfBounds () {

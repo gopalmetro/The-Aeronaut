@@ -10,7 +10,13 @@ public class PowerUp : MonoBehaviour {
         if (other.gameObject.tag == "Player") {
             //send Notification
             NotificationCenter.defaultCenter.postNotification(powerUp);
-            Destroy(this.gameObject);
+            Destroy();
         }
+
+
+    }
+
+    public void Destroy() {
+        this.gameObject.SetActive(false);
     }
 }
