@@ -46,6 +46,12 @@ public class BackgroundController : MonoBehaviour {
             }
         }
 
+        if (currentHeight  < 0) {
+            Debug.Log("Ey");
+            Notification Death = new Notification(NotificationType.PlayerDeath, "Player has Died");
+            NotificationCenter.defaultCenter.postNotification(Death);
+        }
+
         if (currentHeight < heightToBeginTransition)
         {
             tempBackgroundParts[1].GetComponent<Background>().setIndex(0);
@@ -53,7 +59,7 @@ public class BackgroundController : MonoBehaviour {
             tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
 
 
-            if (currentHeight - 1 > 0)
+            if (currentHeight + 1 > 0)
             {
                 tempBackgroundParts[0].GetComponent<Background>().setIndex(0);
                 tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex]);

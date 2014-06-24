@@ -18,8 +18,6 @@ public class CollisionController : MonoBehaviour {
 		this.checkForLoss ();
 	}
 
-	bool check = true;
-
 	void FixedUpdate () {
 		checkIfOutOfBounds ();
 	}
@@ -32,12 +30,11 @@ public class CollisionController : MonoBehaviour {
 			transform.position = new Vector3 (-10, transform.position.y, transform.position.z);
 		}
 
-		if (rigidbody2D.velocity.y < -3 && check) {
+		if (rigidbody2D.velocity.y < -3) {
 			rigidbody2D.velocity -= new Vector2 (rigidbody2D.velocity.x, .1f);
 		}
 		if (rigidbody2D.velocity.y < -30) {
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -30);
-			check = false;
 		}
 				
 	}
