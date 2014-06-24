@@ -5,6 +5,8 @@ public class CollisionController : MonoBehaviour {
 
 	public float newDeflateRate = .006f;
 	private GameObject cam;
+	private bool isGrounded = false ;
+
 
 	void Start () {
 		cam = GameObject.Find ("Main Camera");
@@ -13,23 +15,29 @@ public class CollisionController : MonoBehaviour {
 	}
 
 	void Update () {
+		checkIfOnBalloon ();
+
 		this.checkForLoss ();
 	}
 
 	bool check = true;
 
 	void FixedUpdate () {
-		checkIfOnBalloon ();
 		checkIfOutOfBounds ();
 	}
 
 	void checkIfOnBalloon () {
+
 		float playerSize = this.renderer.bounds.size.y;
 		Vector3 position1 = transform.position;
 		Vector3 position2 = transform.position;
+
+		position1.x = position1.x - playerSize;
+		position1.y = position1.y + playerSize / 2;
+		
 		position2.x = position2.x + playerSize;
 		position2.y = position2.y - playerSize / 2;
-		
+
 		Collider2D[] hits = Physics2D.OverlapAreaAll (new Vector2 (position1.x, position1.y), new Vector2 (position2.x, position2.y));
 		Notification collision = new Notification (NotificationType.OnBalloonPlayerCollision, "Balloon Collided!");
 		
@@ -38,11 +46,17 @@ public class CollisionController : MonoBehaviour {
 			Collider2D hit = hits [i];
 			if (hit != null) {
 				if (hit.tag == "platform") {
-					NotificationCenter.defaultCenter.postNotification (collision);
+					if(!isGrounded) {
+						NotificationCenter.defaultCenter.postNotification (collision);
+					}
+					isGrounded = true;
+					return;
 				}
 			}
 			i++;
 		}
+		isGrounded = false;
+
 	}
 
 	void checkIfOutOfBounds () {
@@ -57,9 +71,10 @@ public class CollisionController : MonoBehaviour {
 			rigidbody2D.velocity -= new Vector2 (rigidbody2D.velocity.x, .1f);
 		}
 		if (rigidbody2D.velocity.y < -30) {
-			rigidbody.velocity = new Vector2 (rigidbody2D.velocity.x, -30);
+			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -30);
 			check = false;
 		}
+				
 	}
 
 	void checkForLoss () {
