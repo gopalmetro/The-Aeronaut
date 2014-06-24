@@ -50,9 +50,12 @@ public class BalloonAppearance : MonoBehaviour {
 
 
     public void OnCollisionEnter2D(Collision2D other) {
-        var contact = other.contacts[0];
+        /*var contact = other.contacts[0];
         if (contact.point.y < this.transform.position.y - .5f && other.gameObject.tag == "Player") {
             Invoke("Destroy", 0f);
+        }*/
+        if (other.gameObject.tag == "platform" && isVisible) {
+            Physics2D.IgnoreCollision(this.gameObject.collider2D, other.gameObject.collider2D);
         }
         if (other.gameObject.tag == "platform" && !isVisible) {
             Invoke("Destroy", 0f);
