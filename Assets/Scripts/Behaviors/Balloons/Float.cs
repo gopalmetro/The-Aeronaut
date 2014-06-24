@@ -5,7 +5,7 @@ public class Float : MonoBehaviour {
 
     public Vector2 speed;
     public Vector2 direction;
-    public int floatingConst = 4;
+    public int floatingConst;
     protected Vector2 movement;
     public float accel;
 
