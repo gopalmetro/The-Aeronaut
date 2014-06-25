@@ -54,6 +54,7 @@ public class BalloonAppearance : MonoBehaviour {
         if (contact.point.y < this.transform.position.y - .5f && other.gameObject.tag == "Player") {
             Invoke("Destroy", 0f);
         }*/
+
         if (other.gameObject.tag == "platform" && isVisible) {
             Physics2D.IgnoreCollision(this.gameObject.collider2D, other.gameObject.collider2D);
         }
