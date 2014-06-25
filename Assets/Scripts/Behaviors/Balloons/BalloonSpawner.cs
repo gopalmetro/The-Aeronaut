@@ -17,7 +17,7 @@ public class BalloonSpawner : MonoBehaviour {
     private int curBalloon = 0;
     private List<Vector2> BalloonCoord;
     private List<GameObject> SpawningBalloons;
-    private GameObject camera;
+    private GameObject Cam;
     private GameObject player;
     private scoretext scorer;
     public int distance = 10;
@@ -26,7 +26,7 @@ public class BalloonSpawner : MonoBehaviour {
     void Start() {
         totalBalloons = 4;
         timer = 0;
-        camera = GameObject.Find("Main Camera");
+        Cam = GameObject.Find("Main Camera");
         player = GameObject.Find("player");
         scorer = GameObject.Find("Score").GetComponent<scoretext>();
         SpawningBalloons = new List<GameObject>();
@@ -56,7 +56,7 @@ public class BalloonSpawner : MonoBehaviour {
         SpawnBalloons();
         var dist = (player.transform.position - Camera.main.transform.position).z;
         bottomBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).y;
-        this.transform.position = new Vector3(camera.transform.position.x, bottomBorder, dist);
+        this.transform.position = new Vector3(Cam.transform.position.x, bottomBorder, dist);
     }
 
     bool reverse = true;
@@ -87,7 +87,6 @@ public class BalloonSpawner : MonoBehaviour {
     void spawnBalloon(Vector2 coordinate) {
 
         int score = scorer.getScore();
-        GameObject balloon;
         int greenThreshold = 75;
         if (score >= 250) {
             greenThreshold = 50;

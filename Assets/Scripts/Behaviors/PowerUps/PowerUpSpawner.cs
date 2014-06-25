@@ -10,19 +10,18 @@ public class PowerUpSpawner : MonoBehaviour {
     public int timer;
     public int spawntime = 25;
     private List<Vector2> PowerUpCoord;
-    private GameObject camera;
+    private GameObject Cam;
     private GameObject player;
     private int lastPowerUp = -1;
     private GameObject[] powerUps;
     private float topBorder;
-    private int curPowerup = 0;
     private float Timer;
     private float timeDelay = 5;
 
 	// Use this for initialization
 	void Start () {
         timer = 30;
-        camera = GameObject.Find("Main Camera");
+        Cam = GameObject.Find("Main Camera");
         player = GameObject.Find("player");
 	}
 
@@ -55,6 +54,6 @@ public class PowerUpSpawner : MonoBehaviour {
         }
         var dist = (player.transform.position - Camera.main.transform.position).z;
         topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, dist)).y;
-        transform.position = new Vector3(camera.transform.position.x, topBorder + 5, dist);
+        transform.position = new Vector3(Cam.transform.position.x, topBorder + 5, dist);
 	}
 }

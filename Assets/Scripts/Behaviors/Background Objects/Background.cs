@@ -8,12 +8,10 @@ public class Background : MonoBehaviour {
     public char id;
     private int index = 0;
     private int height = 0;
-    private Sprite curSprite;
     private GameObject Player;
 
     public void Awake() {
         Player = GameObject.Find("player");
-        this.GetComponent<SpriteRenderer>().sprite = curSprite;
         this.transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y * 1.5f, this.transform.localScale.z);
 	}
 

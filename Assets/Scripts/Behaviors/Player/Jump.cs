@@ -12,10 +12,15 @@ public class Jump : MonoBehaviour {
 	}
 
 	public void playerJump () {
-		if (isGrounded ()) {
-			rigidbody2D.AddForce (new Vector2 (0, playerJumpHeight));
-			setGrounded (false);
-		}
+        if (isGrounded())
+        {
+            rigidbody2D.AddForce(new Vector2(0, playerJumpHeight));
+            setGrounded(false);
+        }
+        else
+        {
+            setGrounded(false);
+        }
 	}
 
 	public void xAxisMvmtRight () {
@@ -32,7 +37,19 @@ public class Jump : MonoBehaviour {
 		this.GetComponent<AnimationController> ().faceCenter ();
 	}
 
-	public bool isGrounded () {
+    public void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "platform") {
+            setGrounded(true);
+        }
+    }
+
+    public bool isGrounded() {
+        return playerGrounded;
+    }
+}
+
+
+/*public bool isGrounded () {
 		
 		float playerSize = this.renderer.bounds.size.y;
 		Vector3 position1 = transform.position;
@@ -59,4 +76,5 @@ public class Jump : MonoBehaviour {
 		}
 		return false;
 	}
-}
+
+*/

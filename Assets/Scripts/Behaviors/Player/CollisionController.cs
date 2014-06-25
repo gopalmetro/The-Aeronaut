@@ -4,12 +4,9 @@ using System.Collections;
 public class CollisionController : MonoBehaviour {
 
 	public float newDeflateRate = .006f;
-	private GameObject cam;
-	private bool isGrounded = false ;
 
 
 	void Start () {
-		cam = GameObject.Find ("Main Camera");
 		DontDestroyOnLoad (this);
 
 	}

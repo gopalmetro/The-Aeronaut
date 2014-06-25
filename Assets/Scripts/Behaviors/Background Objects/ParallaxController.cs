@@ -9,10 +9,8 @@ public class ParallaxController : MonoBehaviour {
 	public Vector2 speed = new Vector2(2,2);
 	public Vector2 direction = new Vector2(0, -1);
 	private GameObject Player;
-	private GameObject Cam;
 
 	void Start() {
-		Cam = GameObject.Find("Main Camera");
 		Player = GameObject.Find("player");
 	}
 	
