@@ -7,7 +7,7 @@ public class BackgroundController : MonoBehaviour {
     public GameObject backgroundPrefab;
     private List<Sprite> backgrounds;
     private List<GameObject> backgroundParts;
-    private int heightToBeginTransition = 10;
+    private int heightToBeginTransition = 5;
 
 	// Use this for initialization
 	void Start () {
