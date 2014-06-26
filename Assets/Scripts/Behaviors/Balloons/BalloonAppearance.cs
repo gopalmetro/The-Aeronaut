@@ -31,7 +31,7 @@ public class BalloonAppearance : MonoBehaviour {
         }
 
         if (this.transform.localScale.x < .2 && !isVisible) {
-            Destroy();
+           Destroy();
         }
 	}
 

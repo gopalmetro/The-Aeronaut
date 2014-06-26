@@ -13,6 +13,7 @@ public class Background : MonoBehaviour {
     public void Awake() {
         Player = GameObject.Find("player");
         this.transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y * 1.5f, this.transform.localScale.z);
+        this.GetComponent<SpriteRenderer>().sortingOrder = -1000;
 	}
 
     public void setIndex(int ind) {
