@@ -55,11 +55,11 @@ public class BalloonAppearance : MonoBehaviour {
             Invoke("Destroy", 0f);
         }*/
 
-        if (other.gameObject.tag == "platform" && isVisible) {
+        if (other.gameObject.tag == "floor" && isVisible) {
             Physics2D.IgnoreCollision(this.gameObject.collider2D, other.gameObject.collider2D);
         }
         if (other.gameObject.tag == "platform" && !isVisible) {
-            Invoke("Destroy", 0f);
+            Destroy();
         }
         if (other.gameObject.tag == "Player") {
             this.gameObject.GetComponent<Deflate>().playerCheck = true;

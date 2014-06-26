@@ -784,7 +784,7 @@ GameObject:
   - 114: {fileID: 1007233110}
   m_Layer: 0
   m_Name: grass
-  m_TagString: platform
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1034,7 +1034,7 @@ GameObject:
   - 61: {fileID: 1105958221}
   m_Layer: 0
   m_Name: Perspective Camera
-  m_TagString: MainCamera
+  m_TagString: ParallaxCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
