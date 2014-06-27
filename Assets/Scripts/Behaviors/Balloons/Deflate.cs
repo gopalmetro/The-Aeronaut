@@ -31,11 +31,11 @@ public class Deflate : MonoBehaviour {
             this.deflateRate = collisionDeflateRate;
             Float balloonFloat = this.gameObject.GetComponent<Float>();
             BalloonAppearance balloonApp = this.gameObject.GetComponent<BalloonAppearance>();
-            if (!balloonApp.isGreen) {
-                balloonFloat.setSpeed(new Vector2(0, 20f));
+            if (balloonApp.isGreen) {
+                balloonFloat.setSpeed(new Vector2(0, 25f));
             }
             else { 
-                balloonFloat.setSpeed(new Vector2(0, 25f));
+                balloonFloat.setSpeed(new Vector2(0, 20f));
             }
         }
     }

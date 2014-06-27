@@ -188,8 +188,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 106995916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.54906893, y: 31.5495758, z: 500}
-  m_LocalScale: {x: 1.3949188, y: 1.6031841, z: 1}
+  m_LocalPosition: {x: -3.46563721, y: 41.5697937, z: 25}
+  m_LocalScale: {x: 2.85930848, y: 3.50784564, z: 1}
   m_Children: []
   m_Father: {fileID: 624271787}
   m_RootOrder: 0
@@ -1030,7 +1030,6 @@ GameObject:
   - 20: {fileID: 1105958218}
   - 92: {fileID: 1105958217}
   - 124: {fileID: 1105958216}
-  - 81: {fileID: 1105958215}
   - 61: {fileID: 1105958221}
   m_Layer: 0
   m_Name: Perspective Camera
@@ -1039,13 +1038,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1105958215
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105958214}
-  m_Enabled: 1
 --- !u!124 &1105958216
 Behaviour:
   m_ObjectHideFlags: 0
