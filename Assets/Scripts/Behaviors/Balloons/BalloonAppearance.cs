@@ -1,0 +1,74 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class BalloonAppearance : MonoBehaviour {
+
+    public bool isVisible = false;
+    public bool hasBecomeVisible = false;
+    public Sprite curSprite;
+    public bool isGreen = false;
+
+    protected Vector3 originalScale;
+
+
+    public void setSprite(Sprite image) {
+        this.GetComponent<SpriteRenderer>().sprite = image;
+    }
+
+	// Use this for initialization
+	void Start () {
+        originalScale = this.transform.localScale;
+        this.GetComponent<SpriteRenderer>().sprite = curSprite;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        if (this.renderer.IsVisibleFrom(Camera.main)) {
+            isVisible = true;
+        }
+        else {
+            isVisible = false;
+        }
+
+        if (this.transform.localScale.x < .2 && !isVisible) {
+           Destroy();
+        }
+	}
+
+    public void Destroy() {
+        Notification balloonPop = new Notification(NotificationType.BalloonPop, "Balloon Popped!");
+        NotificationCenter.defaultCenter.postNotification(balloonPop);
+        this.transform.localScale = originalScale;
+        this.GetComponent<Deflate>().Reset();
+        this.gameObject.SetActive(false);
+    }
+
+    protected void OnDisable() {
+        CancelInvoke();
+    }
+
+
+
+    public void OnCollisionEnter2D(Collision2D other) {
+        /*var contact = other.contacts[0];
+        if (contact.point.y < this.transform.position.y - .5f && other.gameObject.tag == "Player") {
+            Invoke("Destroy", 0f);
+        }*/
+
+        if (other.gameObject.tag == "floor" && isVisible) {
+            Physics2D.IgnoreCollision(this.gameObject.collider2D, other.gameObject.collider2D);
+        }
+        if (other.gameObject.tag == "platform" && !isVisible) {
+            Destroy();
+        }
+        if (other.gameObject.tag == "Player") {
+            this.gameObject.GetComponent<Deflate>().playerCheck = true;
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "platform" && !isVisible && !isGreen) {
+            Invoke("Destroy", 0f);
+        }
+    }
+}
