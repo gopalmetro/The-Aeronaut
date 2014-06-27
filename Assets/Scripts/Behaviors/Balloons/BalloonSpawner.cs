@@ -6,166 +6,117 @@ using System.Collections.Generic;
 
 public class BalloonSpawner : MonoBehaviour {
 
-    public GameObject balloon;
+	public GameObject balloon;
+	public Sprite greenSprite;
+	public int balloonPool = 50;
+	public int updateCounter;
+	public int distance = 10;
+	private GameObject Cam;
+	private GameObject player;
+	private GameObject[] balloons;
+	private int lastBalloon = -1;
+	private int balloonIterator = 0;
+	private List<Vector2> balloonPositions;
+	private List<GameObject> spawnedBalloons;
+	private scoretext scorer;
+	private float bottomBorder;
+	private bool forward = true;
+	private int greenThreshold = 75;
+	
+	void Start () {
+		Cam = GameObject.Find ("Main Camera");
+		player = GameObject.Find ("player");
+		scorer = GameObject.Find ("Score").GetComponent<scoretext> ();
+		spawnedBalloons = new List<GameObject> ();
+		updateCounter = 0;
+		balloonPositions = getBalloonPositions ();
+	}
+	
+	void Awake () {
+		balloons = new GameObject[balloonPool];
+		for (int i = 0; i < balloons.Length; i++) {
+			balloons [i] = Instantiate (balloon) as GameObject;
+			balloons [i].SetActive (false);
+			balloons [i].transform.parent = transform.parent;
+		}
+	}
 
-    public int balloonPool = 50;
-    private int lastBalloon = -1;
-    private GameObject[] balloons;
-    public int totalBalloons;
-    public int timer;
-    public int spawntime = 30;
-    private int curBalloon = 0;
-    private List<Vector2> BalloonCoord;
-    private List<GameObject> SpawningBalloons;
-    private GameObject Cam;
-    private GameObject player;
-    private scoretext scorer;
-    public int distance = 10;
-    private float bottomBorder;
+	private GameObject getNextBalloon () {
+		lastBalloon++;
+		if (lastBalloon > balloonPool - 1) {
+			lastBalloon = 0;
+		}
+		return balloons [lastBalloon];
+	}
 
-    void Start() {
-        totalBalloons = 4;
-        timer = 0;
-        Cam = GameObject.Find("Main Camera");
-        player = GameObject.Find("player");
-        scorer = GameObject.Find("Score").GetComponent<scoretext>();
-        SpawningBalloons = new List<GameObject>();
-        NotificationCenter.defaultCenter.addListener(onReceiveNotificationBalloonPop, NotificationType.BalloonPop);
+	private Vector3 getSpawnPosition () {
+		int i = 0;
+		if (forward) { 
+			i = balloonIterator;
+		} else {
+			i = balloonPositions.Capacity - balloonIterator - 1;
+		}
+		return new Vector3 (this.transform.position.x + balloonPositions [i].x, this.transform.position.y + balloonPositions [i].y - 5, 0);
+	}
 
-    }
+	private List<Vector2> getBalloonPositions () {
+		List<Vector2> balloonPositions = new List<Vector2> ();
+		int Xo = -10;
+		int width = 20;
+		int spawnheight = 4;
+		int numberOfSections = 4;
+		for (int i = 0; i < numberOfSections; i++) {
+			float sectionXo = Xo + (i * width / numberOfSections);
+			float sectionXf = Xo + ((i + 1) * width / numberOfSections);
+			float X = Random.Range (sectionXo, sectionXf);
+			float Y = Random.Range (spawnheight - 4, spawnheight);
+			balloonPositions.Add (new Vector2 (X, Y));
+		}
+		return balloonPositions;
+	}
 
-    void Awake() {
-        balloons = new GameObject[balloonPool];
-        for (int i = 0; i < balloons.Length; i++) {
-            balloons[i] = Instantiate(balloon) as GameObject;
-            balloons[i].SetActive(false);
-            balloons[i].transform.parent = transform.parent;
-        }
-    }
+	void Update () {
 
-    public GameObject getNextBalloon() {
-        lastBalloon++;
-        if (lastBalloon > balloonPool - 1) {
-            lastBalloon = 0;
-        }
-        return balloons[lastBalloon];
-    }
+		updateCounter++;
+		
+		if (updateCounter % 30 == 0) {
+			GameObject balloon = getNextBalloon ();
+			balloon.transform.parent = this.transform.parent;
+			balloon.transform.position = getSpawnPosition ();
 
-    void Update() {
+			BalloonAppearance balloonAppearance = balloon.GetComponent<BalloonAppearance> ();
+			balloonAppearance.direction = new Vector2 (0, 1);
+			balloonAppearance.speed = new Vector2 (0, 30f);
+			balloonAppearance.accel = 2f;
+			balloon.SetActive (true);
 
-        SpawnBalloons();
-        var dist = (player.transform.position - Camera.main.transform.position).z;
-        bottomBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).y;
-        this.transform.position = new Vector3(Cam.transform.position.x, bottomBorder, dist);
-    }
+			if (Random.Range (0, 100) > greenThreshold) {
+				balloonAppearance.curSprite = (Sprite)Resources.Load ("Textures/greenballoon", typeof(Sprite));
+				balloonAppearance.isGreen = true;
+				balloonAppearance.deflateRate = .002f;
+			} else {
+				balloonAppearance.curSprite = (Sprite)Resources.Load ("Textures/redballoon", typeof(Sprite));
+				balloonAppearance.isGreen = false;
+				balloonAppearance.deflateRate = .001f;
+			}
 
-    bool reverse = true;
+			spawnedBalloons.Add (balloon);
 
-    void SpawnBalloons() {
-
-        if (curBalloon >= 4) {
-            curBalloon = 0;
-            reverse = !reverse;
-        }
-        if (curBalloon == 0) {
-            BalloonCoord = getBalloonPoints();
-        }
-        if (timer == spawntime && reverse == true) {
-            spawnBalloon(BalloonCoord[curBalloon]);
-            curBalloon++;
-        }
-        if (timer == spawntime && reverse == false) {
-            spawnBalloon(BalloonCoord[BalloonCoord.Capacity - curBalloon - 1]);
-            curBalloon++;
-        }
-        if (timer >= spawntime) {
-            timer = 0;
-        }
-        timer++;
-    }
-
-    void spawnBalloon(Vector2 coordinate) {
-
-        int score = scorer.getScore();
-        int greenThreshold = 75;
-        if (score >= 250) {
-            greenThreshold = 50;
-        }
-
-        var balloonrandomizer = Random.Range(0, 100);
-
-        Vector3 curPos = new Vector3(
-        this.transform.position.x + coordinate.x,
-        this.transform.position.y + coordinate.y - 5,
-        0
-        );
-        if (balloonrandomizer > greenThreshold) {
-            balloon = spawnGreenBalloon(curPos);
-        }
-        else {
-            balloon = spawnRedBalloon(curPos);
-        }
-
-    }
-
-    /// <summary>
-    /// Subdivides the area of the spawner into four equals parts. Then randomly places balloons in these five parts
-    /// This is in order to later implement smarter algorithms to decide how the balloons should be placed, and allows us to track
-    /// previous balloons coordinates and can tie in to the players movements as well.
-    /// </summary>
-    /// <returns> List of 4 coordinates representing the next 4 balloon locations</returns>
-
-    public List<Vector2> getBalloonPoints() {
-        List<Vector2> BalloonPoints = new List<Vector2>();
-        List<Vector2> Sections = new List<Vector2>();
+			balloonIterator++;
+			if (balloonIterator >= 4) {
+				balloonIterator = 0;
+				forward = !forward;
+				balloonPositions = getBalloonPositions ();
+			}
+			updateCounter = 0;
+		}
+		
+		var dist = (player.transform.position - Camera.main.transform.position).z;
+		bottomBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).y;
+		this.transform.position = new Vector3 (Cam.transform.position.x, bottomBorder, dist);
+	}
 
 
-        int spawnwidth = 20;
-        int spawnheight = 4;
-        int offset = -10;
-        float curX = 0, curY = 0;
-        for (int i = 0; i < 4; i++) {
-            int section = spawnwidth / 4;
-            Sections.Add(new Vector2(section + offset, spawnheight));
-            offset += 5;
-        }
-        for (int i = 0; i < Sections.Capacity; i++) {
-            Vector2 curRange = Sections[i];
-
-            curX = Random.Range(curRange.x - 5, curRange.x);
-            curY = Random.Range(curRange.y - 4, curRange.y);
-            BalloonPoints.Add(new Vector2(curX, curY));
-        }
-
-        return BalloonPoints;
-    }
-
-    public GameObject spawnGreenBalloon(Vector3 curPos) {
-        GameObject balloon;
-        balloon = getNextBalloon();
-        balloon = this.GetComponent<GreenBalloon>().greenBalloonPresets(balloon);
-        balloon.transform.position = curPos;
-        SpawningBalloons.Add(balloon);
-        balloon.SetActive(true);
-        totalBalloons++;
-        return balloon;
-    }
-
-    public GameObject spawnRedBalloon(Vector3 curPos) {
-        GameObject balloon;
-        balloon = getNextBalloon();
-        balloon = this.GetComponent<RedBalloon>().redBalloonPresets(balloon);
-        balloon.transform.position = curPos;
-        SpawningBalloons.Add(balloon);
-        balloon.SetActive(true);
-        totalBalloons++;
-        return balloon;
-    }
-
-    void onReceiveNotificationBalloonPop(Notification note) {
-        totalBalloons--;
-    }
-
-    
 }
+
 
