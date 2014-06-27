@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PowerUp : MonoBehaviour {
@@ -17,7 +17,7 @@ public class PowerUp : MonoBehaviour {
         Notification powerUp = new Notification(NotificationType.OnPowerUp, "Powerup");
         Notification achievement = new Notification(NotificationType.OnAchievableEvent, "Powerup Picked Up!");
 
-        if (other.gameObject.tag == "Player") {
+        if (other.sceneBalloonObject.tag == "Player") {
             //send Notification
             NotificationCenter.defaultCenter.postNotification(powerUp);
             NotificationCenter.defaultCenter.postNotification(achievement);
@@ -36,6 +36,6 @@ public class PowerUp : MonoBehaviour {
     }
 
     public void Destroy() {
-        this.gameObject.SetActive(false);
+        this.sceneBalloonObject.SetActive(false);
     }
 }

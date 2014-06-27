@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 88bebdf327cf14c2a98c46cecf516d83
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - greenSprite: {instanceID: 0}
+  - balloon: {fileID: 100000, guid: d66533b505ccad149a6a02b38abb1a2d, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
