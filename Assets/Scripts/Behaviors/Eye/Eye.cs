@@ -15,7 +15,9 @@ public class Eye : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        foreach (Touch touch in Input.touches) {
+            mousePosition = Camera.main.ScreenToWorldPoint(touch.position);
+        }
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition = new Vector3(mousePosition.x, mousePosition.y, initZ);
 
