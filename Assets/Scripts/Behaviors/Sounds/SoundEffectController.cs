@@ -6,8 +6,7 @@ public class SoundEffectController : MonoBehaviour {
     public AudioClip pop;
 
 
-    void Start()
-    {
+    void Start() {
         DontDestroyOnLoad(this);
         NotificationCenter.defaultCenter.addListener(BalloonPopSoundEffect, NotificationType.BalloonPop);
     }

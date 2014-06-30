@@ -46,34 +46,27 @@ public class BackgroundController : MonoBehaviour {
             }
         }
 
-        if (currentHeight < heightToBeginTransition)
-        {
+        if (currentHeight < heightToBeginTransition) {
+            
             tempBackgroundParts[1].GetComponent<Background>().setIndex(0);
-            tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
+            tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[0]);
             tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
-
-
-            if (currentHeight > 0)
-            {
-                tempBackgroundParts[0].GetComponent<Background>().setIndex(0);
-                tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
-                tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
-            }
+            tempBackgroundParts[0].GetComponent<Background>().setIndex(0);
+            tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[0]);
+            tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
+            
         }
-        else
-        {
+        else {
             tempBackgroundParts[1].GetComponent<Background>().setIndex(currentIndex + 1);
             tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex + 1]);
             tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
 
-            if (currentIndex - 1 < 0)
-            {
+            if (currentIndex - 1 < 0) {
                 tempBackgroundParts[0].GetComponent<Background>().setIndex(currentIndex - 1);
                 tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
                 tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
             }
-            else
-            {
+            else {
                 tempBackgroundParts[0].GetComponent<Background>().setIndex(currentIndex - 1);
                 tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex - 1]);
                 tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
