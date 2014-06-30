@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿//Assistance from: http://www.developermemo.com/2362547/
+// Usage:
+// NotificationCenter.defaultCenter.addListener( onNotification );
+// NotificationCenter.defaultCenter.sendNotification( new Notification( NotificationTypes.OnStuff, this ) );
+// NotificationCenter.defaultCenter.removeListener( onNotification, NotificationType.OnStuff );
+using UnityEngine;
 using System.Collections;
 
 public enum NotificationType {
@@ -13,12 +18,6 @@ public enum NotificationType {
 
 public delegate void OnNotificationDelegate (Notification note);
 
-//Assistance from: http://www.developermemo.com/2362547/
-// Usage:
-// NotificationCenter.defaultCenter.addListener( onNotification );
-// NotificationCenter.defaultCenter.sendNotification( new Notification( NotificationTypes.OnStuff, this ) );
-// NotificationCenter.defaultCenter.removeListener( onNotification, NotificationType.OnStuff );
-
 public class NotificationCenter {
 
 	private static NotificationCenter instance;
@@ -30,10 +29,6 @@ public class NotificationCenter {
 			return;
 		}
 		instance = this;
-	}
-
-	void NotificationCenterSetToNull () {
-		instance = null;
 	}
 
 	public static NotificationCenter defaultCenter {
@@ -63,20 +58,24 @@ public class NotificationCenter {
 		if (listeners [typeInt].Contains (listenerDelegate))
 			listeners [typeInt].Remove (listenerDelegate);
 
-		// Clean up empty listener ArrayLists
 		if (listeners [typeInt].Count == 0)
 			listeners [typeInt] = null;
 	}
 
-	public void postNotification (Notification note) {
-		int typeInt = (int)note.type;
+	public void postNotification (Notification notification) {
+		int typeInt = (int)notification.type;
 
 		if (listeners [typeInt] == null)
 			return;
 
 		foreach (OnNotificationDelegate delegateCall in listeners[typeInt]) {
-			delegateCall (note);
+			delegateCall(notification);
 		}
 
 	}
+
+	private void NotificationCenterSetToNull () {
+		instance = null;
+	}
+
 }

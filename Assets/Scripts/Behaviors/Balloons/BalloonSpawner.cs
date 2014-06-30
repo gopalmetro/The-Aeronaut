@@ -86,17 +86,15 @@ public class BalloonSpawner : MonoBehaviour {
 
 			BalloonAppearance balloonAppearance = balloon.GetComponent<BalloonAppearance> ();
 			balloonAppearance.direction = new Vector2 (0, 1);
-			balloonAppearance.speed = new Vector2 (0, 30f);
-			balloonAppearance.accel = 2f;
+			balloonAppearance.speed = new Vector2 (0, 6f);
+			balloonAppearance.accel = 0.0f;
 			balloon.SetActive (true);
 
 			if (Random.Range (0, 100) > greenThreshold) {
-				balloonAppearance.curSprite = (Sprite)Resources.Load ("Textures/greenballoon", typeof(Sprite));
-				balloonAppearance.isGreen = true;
+				balloonAppearance.setSprite((Sprite)Resources.Load ("Textures/greenballoon", typeof(Sprite)));
 				balloonAppearance.deflateRate = .002f;
 			} else {
-				balloonAppearance.curSprite = (Sprite)Resources.Load ("Textures/redballoon", typeof(Sprite));
-				balloonAppearance.isGreen = false;
+				balloonAppearance.setSprite((Sprite)Resources.Load ("Textures/redballoon", typeof(Sprite)));
 				balloonAppearance.deflateRate = .001f;
 			}
 

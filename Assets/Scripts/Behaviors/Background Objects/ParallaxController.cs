@@ -38,7 +38,6 @@ public class ParallaxController : MonoBehaviour {
             if (spawnTimer > 10 && spawnCounter == 1){
                 GameObject ForeObject;
                 int index = Random.Range(0, atmosphericForegroundObjects.Length);
-                Debug.Log(index);
                 spawnCounter++;
                 ForeObject = (GameObject)Instantiate(atmosphericForegroundObjects[index] as GameObject);
                 ForeObject.transform.position = new Vector3(Random.Range(-10, 10),

@@ -3,10 +3,9 @@ using System.Collections;
 
 public class BackgroundNotification : Notification {
 
-    public GameObject gameObj;
+	public GameObject gameObj;
 	
-    public BackgroundNotification( NotificationType type, GameObject gameObject ) : base( type )
-	{
+	public BackgroundNotification (NotificationType type, GameObject gameObject) : base( type ) {
 		this.gameObj = gameObject;
 	}
 }
