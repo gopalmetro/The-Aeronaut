@@ -4,7 +4,7 @@ using System.Collections;
 public class startbutton : MonoBehaviour {
 
     public Texture2D startbuttonimage;
-    public GUISkin GUIskin = null; 
+    public GUISkin GUIskin; 
 
     void OnGUI() {
         GUI.skin = GUIskin;
