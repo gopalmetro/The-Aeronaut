@@ -6,6 +6,8 @@ public class Jump : MonoBehaviour {
 	public float playerSpeed = 5;
 	private bool playerGrounded = true;
 	private int playerJumpHeight = 500;
+    private float jumpConstant = 1;
+    private int balloonSpeedCount = 0;
    
 	public void setGrounded (bool ground) {
 		playerGrounded = ground;
@@ -13,7 +15,7 @@ public class Jump : MonoBehaviour {
 
 	public void playerJump () {
         if (isGrounded()) {
-            rigidbody2D.AddForce(new Vector2(0, playerJumpHeight));
+            rigidbody2D.AddForce(new Vector2(0, playerJumpHeight * jumpConstant));
             setGrounded(false);
         }
         else {
@@ -38,6 +40,21 @@ public class Jump : MonoBehaviour {
     public void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "platform") {
             setGrounded(true);
+            jumpConstant = 1f;
+            playerSpeed = 5;
+            balloonPowerUps(other);
+        }
+    }
+
+    public void balloonPowerUps(Collision2D other) {
+        if (other.gameObject.name == "JumpBalloon") {
+            this.rigidbody2D.velocity += new Vector2(0, 10);
+            jumpConstant = 2.5f;
+        }
+
+        if (other.gameObject.name == "SpeedBalloon") {
+            playerSpeed = 10;
+            //we can implement these power ups to last through x seconds of time
         }
     }
 
@@ -45,34 +62,3 @@ public class Jump : MonoBehaviour {
         return playerGrounded;
     }
 }
-
-
-/*public bool isGrounded () {
-		
-		float playerSize = this.renderer.bounds.size.y;
-		Vector3 position1 = transform.position;
-		Vector3 position2 = transform.position;
-
-		position1.x = position1.x - playerSize;
-		position1.y = position1.y + playerSize / 2;
-
-		position2.x = position2.x + playerSize;
-		position2.y = position2.y - playerSize / 2;
-		
-		Collider2D[] hits = Physics2D.OverlapAreaAll (new Vector2 (position1.x, position1.y), new Vector2 (position2.x, position2.y));
-
-		int i = 0;
-
-		while (i < hits.Length) {
-			Collider2D hit = hits [i];
-			if (hit != null) {
-				if (hit.tag == "platform") {
-					return true;
-				}
-			}
-			i++;
-		}
-		return false;
-	}
-
-*/

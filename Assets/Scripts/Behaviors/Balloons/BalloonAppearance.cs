@@ -39,7 +39,7 @@ public class BalloonAppearance : MonoBehaviour {
 
 		Notification balloonPop = new Notification (NotificationType.BalloonPop);
 		NotificationCenter.defaultCenter.postNotification (balloonPop);
-	
+        this.gameObject.name = "balloon";
 		this.transform.localScale = KOriginalScale;
 		this.deflateRate = KNormalDeflateRate;
 		this.gameObject.SetActive (false);

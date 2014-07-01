@@ -6,8 +6,7 @@ using System.Collections.Generic;
 
 public class BalloonSpawner : MonoBehaviour {
 
-	public GameObject balloon;
-	public Sprite greenSprite;
+    public GameObject balloon;
 	public int balloonPool = 50;
 	public int updateCounter;
 	public int distance = 10;
@@ -22,6 +21,7 @@ public class BalloonSpawner : MonoBehaviour {
 	private float bottomBorder;
 	private bool forward = true;
 	private int greenThreshold = 75;
+    private int yellowThreshold = 95;
 	
 	void Start () {
 		Cam = GameObject.Find ("Main Camera");
@@ -90,10 +90,18 @@ public class BalloonSpawner : MonoBehaviour {
 			balloonAppearance.accel = 0.0f;
 			balloon.SetActive (true);
 
-			if (Random.Range (0, 100) > greenThreshold) {
+            int balloonVariety = Random.Range(0, 100);
+			if ( yellowThreshold > balloonVariety && balloonVariety > greenThreshold) {
 				balloonAppearance.setSprite((Sprite)Resources.Load ("Textures/greenballoon", typeof(Sprite)));
+                balloonAppearance.speed = new Vector2(0, 10f);
 				balloonAppearance.deflateRate = .002f;
-			} else {
+                balloon.name = "SpeedBalloon";
+			} else if(balloonVariety > yellowThreshold) {
+                balloonAppearance.setSprite((Sprite)Resources.Load("Textures/yellowballoon", typeof(Sprite)));
+                balloonAppearance.speed = new Vector2(0, 8f);
+                balloonAppearance.deflateRate = .002f;
+                balloon.name = "JumpBalloon";
+            } else {
 				balloonAppearance.setSprite((Sprite)Resources.Load ("Textures/redballoon", typeof(Sprite)));
 				balloonAppearance.deflateRate = .001f;
 			}

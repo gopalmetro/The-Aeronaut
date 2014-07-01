@@ -27,7 +27,6 @@ public class CollisionController : MonoBehaviour {
 		}
 		if (rigidbody2D.velocity.y < -30) {
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -30);
-		}
-				
+		}	
 	}
 }

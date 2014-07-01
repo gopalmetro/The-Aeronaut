@@ -1271,7 +1271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloon: {fileID: 100000, guid: d66533b505ccad149a6a02b38abb1a2d, type: 2}
-  greenSprite: {fileID: 0}
   balloonPool: 50
   updateCounter: 0
   distance: 10
