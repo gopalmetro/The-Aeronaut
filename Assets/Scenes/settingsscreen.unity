@@ -586,6 +586,7 @@ Transform:
   - {fileID: 816384290}
   - {fileID: 963145064}
   - {fileID: 1279545149}
+  - {fileID: 2068339485}
   m_Father: {fileID: 1214980047}
   m_RootOrder: 2
 --- !u!1 &1744339962
@@ -892,3 +893,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: .25, y: 0}
+--- !u!1 &2068339484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2068339485}
+  - 114: {fileID: 2068339486}
+  m_Layer: 0
+  m_Name: creditsbutton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2068339485
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068339484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.70689869, y: .940500796, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1647142939}
+  m_RootOrder: 3
+--- !u!114 &2068339486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068339484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f5aa4f0becc47449b7931081b5ae71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
