@@ -13,8 +13,7 @@ public class Floor : MonoBehaviour {
         if (other.gameObject.tag == "platform") {
             Physics2D.IgnoreCollision(other.gameObject.collider2D, this.gameObject.collider2D);
         }
-        if (other.gameObject.tag == "Player" && !isVisible)
-        {
+        if (other.gameObject.tag == "Player" && !isVisible) {
             Application.LoadLevel("losescreen");
         }
     }

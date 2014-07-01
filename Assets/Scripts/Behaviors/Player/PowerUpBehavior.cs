@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PowerUpManager : MonoBehaviour {
+public class PowerUpBehavior : MonoBehaviour {
 
 	int jumpPowerUpHeight = 750;
 
