@@ -82,11 +82,3 @@ public class AchievementController : MonoBehaviour {
     }
 
 }
-
-/* 
- *     void OnCollisionEnter2D(Collision2D info) {
-        if (info.gameObject.tag == "Player") {
-            messageIsVisible = true;
-        }
-    }
-*/

@@ -102,6 +102,7 @@ Transform:
   - {fileID: 1602579323}
   - {fileID: 1824335396}
   m_Father: {fileID: 1214980047}
+  m_RootOrder: 1
 --- !u!1 &449909744
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,6 +112,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 449909745}
   - 212: {fileID: 449909746}
+  - 114: {fileID: 449909747}
   m_Layer: 0
   m_Name: small_cloud_start_screen
   m_TagString: Untagged
@@ -129,6 +131,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1824335396}
+  m_RootOrder: 1
 --- !u!212 &449909746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -147,11 +150,22 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 590801e6857701a4fb06e7b35f29d42a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &449909747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 449909744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: .5, y: 0}
 --- !u!1 &614965799
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +193,7 @@ Transform:
   m_Children:
   - {fileID: 815029818}
   m_Father: {fileID: 1214980047}
+  m_RootOrder: 0
 --- !u!1 &815029816
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,9 +228,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a01c8748ba1c1ac4493a8060403fa338, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &815029818
@@ -229,6 +243,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.04999995, z: 1}
   m_Children: []
   m_Father: {fileID: 614965800}
+  m_RootOrder: 0
 --- !u!1 &816384289
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1647142939}
+  m_RootOrder: 0
 --- !u!114 &816384291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1647142939}
+  m_RootOrder: 1
 --- !u!114 &963145065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +358,7 @@ Transform:
   - {fileID: 372791132}
   - {fileID: 1647142939}
   m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1279545148
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +386,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1647142939}
+  m_RootOrder: 2
 --- !u!114 &1279545150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +412,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1342674161}
   - 212: {fileID: 1342674162}
+  - 114: {fileID: 1342674163}
   m_Layer: 0
   m_Name: small_cloud_start_screen
   m_TagString: Untagged
@@ -411,6 +431,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1824335396}
+  m_RootOrder: 2
 --- !u!212 &1342674162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -429,11 +450,22 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 590801e6857701a4fb06e7b35f29d42a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1342674163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1342674160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: .5, y: 0}
 --- !u!1 &1379654607
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +475,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1379654609}
   - 212: {fileID: 1379654608}
+  - 114: {fileID: 1379654610}
   m_Layer: 0
   m_Name: small_cloud_start_screen
   m_TagString: Untagged
@@ -468,9 +501,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 590801e6857701a4fb06e7b35f29d42a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1379654609
@@ -484,6 +516,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1824335396}
+  m_RootOrder: 0
+--- !u!114 &1379654610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1379654607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: .5, y: 0}
 --- !u!1 &1602579322
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +537,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1602579323}
-  - 114: {fileID: 1602579324}
   m_Layer: 0
   m_Name: BigClouds
   m_TagString: Untagged
@@ -513,18 +557,7 @@ Transform:
   - {fileID: 1964310404}
   - {fileID: 1923653375}
   m_Father: {fileID: 372791132}
---- !u!114 &1602579324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1602579322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: .5, y: 0}
+  m_RootOrder: 0
 --- !u!1 &1647142938
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +587,7 @@ Transform:
   - {fileID: 963145064}
   - {fileID: 1279545149}
   m_Father: {fileID: 1214980047}
+  m_RootOrder: 2
 --- !u!1 &1744339962
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,8 +655,11 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
 --- !u!4 &1744339967
 Transform:
   m_ObjectHideFlags: 0
@@ -634,6 +671,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &1824335395
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +680,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1824335396}
-  - 114: {fileID: 1824335397}
   m_Layer: 0
   m_Name: SmallClouds
   m_TagString: Untagged
@@ -665,18 +702,7 @@ Transform:
   - {fileID: 1342674161}
   - {fileID: 1894886248}
   m_Father: {fileID: 372791132}
---- !u!114 &1824335397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1824335395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: .25, y: 0}
+  m_RootOrder: 1
 --- !u!1 &1894886247
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +712,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1894886248}
   - 212: {fileID: 1894886249}
+  - 114: {fileID: 1894886250}
   m_Layer: 0
   m_Name: small_cloud_start_screen
   m_TagString: Untagged
@@ -704,6 +731,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1824335396}
+  m_RootOrder: 3
 --- !u!212 &1894886249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -722,11 +750,22 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 590801e6857701a4fb06e7b35f29d42a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1894886250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1894886247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: .5, y: 0}
 --- !u!1 &1923653374
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +775,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1923653375}
   - 212: {fileID: 1923653376}
+  - 114: {fileID: 1923653377}
   m_Layer: 0
   m_Name: big_cloud_start_screen
   m_TagString: Untagged
@@ -754,6 +794,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1602579323}
+  m_RootOrder: 1
 --- !u!212 &1923653376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -772,11 +813,22 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5e197772917ec4d4bb924d7c9ce49ce1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1923653377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1923653374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: .25, y: 0}
 --- !u!1 &1964310403
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +838,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1964310404}
   - 212: {fileID: 1964310405}
+  - 114: {fileID: 1964310406}
   m_Layer: 0
   m_Name: big_cloud_start_screen
   m_TagString: Untagged
@@ -804,6 +857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1602579323}
+  m_RootOrder: 0
 --- !u!212 &1964310405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -822,8 +876,19 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5e197772917ec4d4bb924d7c9ce49ce1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1964310406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964310403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60223255fdefb94983acaa88d4916ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: .25, y: 0}

@@ -8,10 +8,6 @@ public class altimeter : MonoBehaviour {
     AchievementController scorer;
     public int height;
 
-	// Use this for initialization
-	void Start () {
-    }
-	
 	// Update is called once per frame
 	void FixedUpdate () {
 		Player = GameObject.Find("player");

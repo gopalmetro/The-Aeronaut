@@ -3,6 +3,7 @@
 // NotificationCenter.defaultCenter.addListener( onNotification );
 // NotificationCenter.defaultCenter.sendNotification( new Notification( NotificationTypes.OnStuff, this ) );
 // NotificationCenter.defaultCenter.removeListener( onNotification, NotificationType.OnStuff );
+
 using UnityEngine;
 using System.Collections;
 
@@ -41,8 +42,6 @@ public class NotificationCenter {
 
 	public void addListener (OnNotificationDelegate newListenerDelegate, NotificationType type) {
 		int typeInt = (int)type;
-
-		// Create the listener ArrayList lazily
 		if (listeners [typeInt] == null)
 			listeners [typeInt] = new ArrayList ();
 

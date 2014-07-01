@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CollisionController : MonoBehaviour {
 
-	public float newDeflateRate = .006f;
+	private float newDeflateRate = .006f;
 
 
 	void Start () {

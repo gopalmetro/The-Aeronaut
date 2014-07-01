@@ -17,7 +17,6 @@ public class BalloonSpawner : MonoBehaviour {
 	private int balloonIterator = 0;
 	private List<Vector2> balloonPositions;
 	private List<GameObject> spawnedBalloons;
-	private scoretext scorer;
 	private float bottomBorder;
 	private bool forward = true;
 	private int greenThreshold = 75;
@@ -26,7 +25,6 @@ public class BalloonSpawner : MonoBehaviour {
 	void Start () {
 		Cam = GameObject.Find ("Main Camera");
 		player = GameObject.Find ("player");
-		scorer = GameObject.Find ("Score").GetComponent<scoretext> ();
 		spawnedBalloons = new List<GameObject> ();
 		updateCounter = 0;
 		balloonPositions = getBalloonPositions ();

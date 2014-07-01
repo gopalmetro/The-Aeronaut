@@ -4,9 +4,9 @@ using System.Collections;
 public class MainMenuClouds : MonoBehaviour {
 
     public Vector2 speed;
-    Vector2 direction = new Vector2(1, 0);
-    bool check = true;
-    protected GameObject background;
+    private Vector2 direction = new Vector2(1, 0);
+    private bool reset = true;
+    private GameObject background;
 
 	// Use this for initialization
 	void Start () {
@@ -19,11 +19,15 @@ public class MainMenuClouds : MonoBehaviour {
         movement *= Time.deltaTime;
         transform.Translate(movement);
 
-        if(!this.renderer.IsVisibleFrom(Camera.main) && check){
+        if(this.renderer.IsVisibleFrom(Camera.main)) {
+            reset = true;
+        }
+
+        if(!this.renderer.IsVisibleFrom(Camera.main) && reset){
             Vector3 curPos = this.transform.position;
             curPos.x = background.transform.position.x - 10;
             this.transform.position = curPos;
-            check = false;
+            reset = false;
         }
 	}
 }

@@ -20,7 +20,4 @@ public class AnimationController : MonoBehaviour {
 	public void faceRight () {
 		animator.SetInteger ("Direction", 2);
 	}
-
-
-
 }

@@ -7,7 +7,6 @@ public class Jump : MonoBehaviour {
 	private bool playerGrounded = true;
 	private int playerJumpHeight = 500;
     private float jumpConstant = 1;
-    private int balloonSpeedCount = 0;
    
 	public void setGrounded (bool ground) {
 		playerGrounded = ground;

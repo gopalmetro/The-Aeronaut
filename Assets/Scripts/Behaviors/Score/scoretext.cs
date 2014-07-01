@@ -9,14 +9,12 @@ public class scoretext : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         scorer = GameObject.Find("Scorer").GetComponent<AchievementController>();
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
         score = scorer.getScore();
         this.guiText.text = "Score: " + score;
-	
 	}
 
     public int getScore() {
