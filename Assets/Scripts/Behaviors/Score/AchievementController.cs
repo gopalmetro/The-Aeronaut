@@ -80,5 +80,4 @@ public class AchievementController : MonoBehaviour {
     {
         setMessageVisible();
     }
-
 }

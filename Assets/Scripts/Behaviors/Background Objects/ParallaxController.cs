@@ -28,7 +28,7 @@ public class ParallaxController : MonoBehaviour {
         if (spaceObjectRange.y == 0 || atmosphericObjectRange.y == 0) {
             Debug.Log("No heights have been set in Parallax Controller, setting to default");
             atmosphericObjectRange = new Vector2(100, 800);
-            spaceObjectRange = new Vector2(1000, 2000);
+            spaceObjectRange = new Vector2(1200, 2000);
         }
 	}
 	
