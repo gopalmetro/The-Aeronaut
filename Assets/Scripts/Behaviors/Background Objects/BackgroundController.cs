@@ -8,6 +8,7 @@ public class BackgroundController : MonoBehaviour {
     private List<Sprite> backgrounds;
     private List<GameObject> backgroundParts;
     private int heightToBeginTransition = 5;
+    private int heightToBeginSpaceTransition = 5 + 8;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +38,7 @@ public class BackgroundController : MonoBehaviour {
         Background currentBackground = current.gameObj.GetComponent<Background>();
         List<GameObject> tempBackgroundParts = new List<GameObject>();
         int currentIndex = currentBackground.getIndex();
+        Debug.Log(currentIndex);
         int currentHeight = currentBackground.getHeight();
         foreach (GameObject a in backgroundParts) {
             
@@ -56,13 +58,10 @@ public class BackgroundController : MonoBehaviour {
             tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
             
         }
-        else {
-            tempBackgroundParts[1].GetComponent<Background>().setIndex(currentIndex + 1);
-            tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex + 1]);
-            tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
+        else if (currentHeight  >= heightToBeginTransition && currentHeight < heightToBeginSpaceTransition - 1) {
 
             if (currentIndex - 1 < 0) {
-                tempBackgroundParts[0].GetComponent<Background>().setIndex(currentIndex - 1);
+                tempBackgroundParts[0].GetComponent<Background>().setIndex(currentIndex);
                 tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
                 tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
             }
@@ -72,6 +71,27 @@ public class BackgroundController : MonoBehaviour {
                 tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
             }
 
+            if (currentIndex + 1 < backgrounds.Count)
+            {
+                tempBackgroundParts[1].GetComponent<Background>().setIndex(currentIndex + 1);
+                tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex + 1]);
+                tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
+            }
+            else
+            {
+                tempBackgroundParts[1].GetComponent<Background>().setIndex(currentIndex);
+                tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[currentIndex]);
+                tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
+            }
+
+        }
+        else {
+            tempBackgroundParts[1].GetComponent<Background>().setIndex(backgrounds.Count - 1);
+            tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[backgrounds.Count - 1]);
+            tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
+            tempBackgroundParts[0].GetComponent<Background>().setIndex(backgrounds.Count - 1);
+            tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[backgrounds.Count - 1]);
+            tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
         }
     }
 

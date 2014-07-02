@@ -40,6 +40,7 @@ public class ParallaxController : MonoBehaviour {
                 int index = Random.Range(0, atmosphericForegroundObjects.Length);
                 spawnCounter++;
                 ForeObject = (GameObject)Instantiate(atmosphericForegroundObjects[index] as GameObject);
+                ForeObject.transform.parent = this.transform;
                 ForeObject.transform.position = new Vector3(Random.Range(-10, 10),
                     Player.transform.position.y + foregroundHeightOffset, ForeObject.transform.position.z);
             }
@@ -48,6 +49,7 @@ public class ParallaxController : MonoBehaviour {
                 int index = Random.Range(0, atmosphericBackgroundObjects.Length);
                 spawnCounter++;
                 BackObject = (GameObject)Instantiate(atmosphericBackgroundObjects[index] as GameObject);
+                BackObject.transform.parent = this.transform;
                 BackObject.transform.position = new Vector3(Random.Range(-10, 10),
                     Player.transform.position.y + backgroundHeightOffset, BackObject.transform.position.z);
             }
@@ -57,17 +59,19 @@ public class ParallaxController : MonoBehaviour {
                 GameObject ForeObject;
                 int firstIndex = Random.Range(0, spaceForegroundObjects.Length);
                 ForeObject = (GameObject)Instantiate(spaceForegroundObjects[firstIndex] as GameObject);
+                ForeObject.transform.parent = this.transform;
                 ForeObject.transform.position = new Vector3(Random.Range(-10, 10),
                     Player.transform.position.y + foregroundHeightOffset, ForeObject.transform.position.z);
                 spawnCounter++;
             }
             if (spawnTimer > 20 && spawnCounter == 2) {
-                GameObject ForeObject;
+                GameObject BackObject;
                 int secondIndex = Random.Range(0, spaceBackgroundObjects.Length);
                 spawnCounter++;
-                ForeObject = (GameObject)Instantiate(spaceBackgroundObjects[secondIndex] as GameObject);
-                ForeObject.transform.position = new Vector3(Random.Range(-10, 10),
-                    Player.transform.position.y + backgroundHeightOffset, ForeObject.transform.position.z);
+                BackObject = (GameObject)Instantiate(spaceBackgroundObjects[secondIndex] as GameObject);
+                BackObject.transform.parent = this.transform;
+                BackObject.transform.position = new Vector3(Random.Range(-10, 10),
+                    Player.transform.position.y + backgroundHeightOffset, BackObject.transform.position.z);
             }
         }
         if (spawnTimer > 30) {
