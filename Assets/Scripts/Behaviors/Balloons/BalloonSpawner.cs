@@ -1,126 +1,189 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 //arraylist & lists
-using System.Collections.Generic;
+using System.Collections.Generic ;
+using System;
 
 public class BalloonSpawner : MonoBehaviour {
-
-    public GameObject balloon;
-	public int balloonPool = 50;
-	public int updateCounter;
-	public int distance = 10;
+	
+	public GameObject balloon;
+	public int balloonPoolCount = 500;
+	
 	private GameObject Cam;
 	private GameObject player;
 	private GameObject[] balloons;
-	private int lastBalloon = -1;
-	private int balloonIterator = 0;
-	private List<Vector2> balloonPositions;
 	private List<GameObject> spawnedBalloons;
-	private float bottomBorder;
-	private bool forward = true;
-	private int greenThreshold = 75;
-    private int yellowThreshold = 95;
+	private float playerYPosition;
+	private int balloonPoolIterator = -1;
+	private int balloonSectionIterator = 0;
 	
+	private scoretext scorer;
+
+	private enum BalloonKind { SLOW, NORMAL, SPEED, JUMP, ARBITRARY };
+	private enum BalloonSpawnThreshold { SLOW = 0, NORMAL = 30, SPEED = 75, JUMP = 95 };
+
 	void Start () {
 		Cam = GameObject.Find ("Main Camera");
 		player = GameObject.Find ("player");
+		scorer = GameObject.Find ("Score").GetComponent<scoretext> ();
 		spawnedBalloons = new List<GameObject> ();
-		updateCounter = 0;
-		balloonPositions = getBalloonPositions ();
+		playerYPosition = player.transform.position.y;
+		float zDistance = (player.transform.position - Camera.main.transform.position).z;
+		float bottomOfCamera = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, zDistance)).y ;
+		this.transform.position = new Vector3 (0, bottomOfCamera, zDistance);
 	}
 	
 	void Awake () {
-		balloons = new GameObject[balloonPool];
+		balloons = new GameObject[balloonPoolCount];
 		for (int i = 0; i < balloons.Length; i++) {
 			balloons [i] = Instantiate (balloon) as GameObject;
 			balloons [i].SetActive (false);
 			balloons [i].transform.parent = transform.parent;
 		}
+		
+	}
+	
+	void Update () {
+
+		float zDistance = (player.transform.position - Camera.main.transform.position).z;
+		float bottomOfCamera = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, zDistance)).y ;
+		float topOfCamera = Camera.main.ViewportToWorldPoint (new Vector3 (0, 1.5f, zDistance)).y ;
+
+		if (isMovingUp()) {
+			if (numberAbove (topOfCamera) < 5) {
+				spawnBalloon (topOfCamera, BalloonKind.ARBITRARY);
+			}  
+			if (numberAbove (topOfCamera, "SlowBalloon") < 1) {
+				spawnBalloon (topOfCamera, BalloonKind.SLOW);
+			}  
+		} 
+
+		if (isMovingDown()) {
+			if (numberBeneath (bottomOfCamera) < 5) {
+				spawnBalloon(bottomOfCamera, BalloonKind.ARBITRARY);
+			}    
+			if (numberBeneath (bottomOfCamera, "NormalBalloon") < 1) {
+				spawnBalloon(bottomOfCamera, BalloonKind.NORMAL);
+			}   
+		}
+	}
+	
+	private void spawnBalloon(float location, BalloonKind balloonKind) {
+
+		GameObject balloon = getNextBalloon();
+		balloon.transform.parent = this.transform.parent;
+		balloon.transform.position = getSpawnPosition(location);
+
+		BalloonAppearance balloonAppearance = balloon.GetComponent<BalloonAppearance> ();
+		balloonAppearance.direction = new Vector2 (0, 1);
+		balloonAppearance.accel = 0.0f;
+		balloon.SetActive (true);
+
+		if(balloonKind == BalloonKind.ARBITRARY){
+			int randomNumber = UnityEngine.Random.Range (0, 100);
+			if (randomNumber > (int)BalloonSpawnThreshold.JUMP) { balloonKind = BalloonKind.JUMP;} 
+			else if (randomNumber > (int)BalloonSpawnThreshold.SPEED) { balloonKind = BalloonKind.SPEED;} 
+			else if (randomNumber > (int)BalloonSpawnThreshold.NORMAL) { balloonKind = BalloonKind.NORMAL;} 
+			else { balloonKind = BalloonKind.SLOW;} 
+		}
+
+		switch (balloonKind) {
+			case BalloonKind.SLOW:
+				balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/blueballoon", typeof(Sprite)));
+				balloonAppearance.speed = new Vector2 (0, 3f);
+				balloonAppearance.deflateRate = .0f;
+				balloon.name = "SlowBalloon";
+			break;
+			case BalloonKind.NORMAL:
+				balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/redballoon", typeof(Sprite)));
+				balloonAppearance.speed = new Vector2 (0, 6f);
+				balloonAppearance.deflateRate = .0f;
+				balloon.name = "NormalBalloon";
+			break;		
+			case BalloonKind.SPEED:
+				balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/greenballoon", typeof(Sprite)));
+				balloonAppearance.speed = new Vector2 (0, 12f);
+				balloonAppearance.deflateRate = .0f;
+				balloon.name = "SpeedBalloon";
+			break;
+			case BalloonKind.JUMP:
+				balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/yellowballoon", typeof(Sprite)));
+				balloonAppearance.speed = new Vector2 (0, 8f);
+				balloonAppearance.deflateRate = .0f;
+				balloon.name = "JumpBalloon";
+			break;
+
+		}
+		spawnedBalloons.Add (balloon);
+	}
+	
+	private Vector3 getSpawnPosition (float yLocation) {
+
+		int i = 0;
+		int Xo = -10;
+		int width = 20;
+		int spawnheight = 0;
+		int numberOfSections = 2;
+
+		balloonSectionIterator++;
+		if (balloonSectionIterator >= 2) { balloonSectionIterator = 0;}
+		float sectionXo = Xo + (balloonSectionIterator * width / numberOfSections);
+		float sectionXf = Xo + ((balloonSectionIterator + 1) * width / numberOfSections);
+		float X = UnityEngine.Random.Range (sectionXo, sectionXf);
+		float Y = UnityEngine.Random.Range (spawnheight - 5, spawnheight);
+
+		return new Vector3 (X, yLocation+Y, 0);
+	}
+	
+	private bool isMovingDown() {
+		bool answer =  player.transform.position.y >= playerYPosition;
+		playerYPosition = player.transform.position.y; 
+		return answer;
+	}
+	
+	private bool isMovingUp() {
+		bool answer =  player.transform.position.y <= playerYPosition;
+		playerYPosition = player.transform.position.y; 
+		return answer;
+	}
+	
+	private int numberBeneath(float bottomOfCamera, String name = null) { 
+		Vector3 position1 = (player.transform.position + (new Vector3(-10,0,0)));
+		Vector3 position2 = (new Vector3(0,bottomOfCamera,0) + (new Vector3(10,-20,0)));
+		Collider2D[] hits = Physics2D.OverlapAreaAll (new Vector2 (position1.x, position1.y), new Vector2 (position2.x, position2.y));
+		int count = 0;
+
+		foreach (Collider2D hit in hits) {
+			if (hit.tag == "platform") {
+				if(name == null || hit.name == name )
+					count++;
+			}
+		}
+		return (int)System.Math.Ceiling ((double)(count / 2));//two colliders per ball
+	}
+	
+	private int numberAbove(float topOfCamera, String name = null) { 
+		Vector3 position1 = (player.transform.position + (new Vector3(-10,0,0)));
+		Vector3 position2 = (new Vector3(0,topOfCamera,0) + (new Vector3(10,+10,0)));
+		Collider2D[] hits = Physics2D.OverlapAreaAll (new Vector2 (position1.x, position1.y), new Vector2 (position2.x, position2.y));
+		int count = 0;
+		foreach (Collider2D hit in hits) {
+			if (hit.tag == "platform") {
+				if(name == null || hit.name == name )
+					count++;
+			}
+		}
+		return (int)System.Math.Ceiling ((double)(count / 2));//two colliders per ball
 	}
 
 	private GameObject getNextBalloon () {
-		lastBalloon++;
-		if (lastBalloon > balloonPool - 1) {
-			lastBalloon = 0;
+		balloonPoolIterator++;
+		if (balloonPoolIterator > balloonPoolCount - 1) {
+			balloonPoolIterator = 0;
 		}
-		return balloons [lastBalloon];
+		return balloons [balloonPoolIterator];
 	}
-
-	private Vector3 getSpawnPosition () {
-		int i = 0;
-		if (forward) { 
-			i = balloonIterator;
-		} else {
-			i = balloonPositions.Capacity - balloonIterator - 1;
-		}
-		return new Vector3 (this.transform.position.x + balloonPositions [i].x, this.transform.position.y + balloonPositions [i].y - 5, 0);
-	}
-
-	private List<Vector2> getBalloonPositions () {
-		List<Vector2> balloonPositions = new List<Vector2> ();
-		int Xo = -10;
-		int width = 20;
-		int spawnheight = 4;
-		int numberOfSections = 4;
-		for (int i = 0; i < numberOfSections; i++) {
-			float sectionXo = Xo + (i * width / numberOfSections);
-			float sectionXf = Xo + ((i + 1) * width / numberOfSections);
-			float X = Random.Range (sectionXo, sectionXf);
-			float Y = Random.Range (spawnheight - 4, spawnheight);
-			balloonPositions.Add (new Vector2 (X, Y));
-		}
-		return balloonPositions;
-	}
-
-	void Update () {
-
-		updateCounter++;
-		
-		if (updateCounter % 30 == 0) {
-			GameObject balloon = getNextBalloon ();
-			balloon.transform.parent = this.transform.parent;
-			balloon.transform.position = getSpawnPosition ();
-
-			BalloonAppearance balloonAppearance = balloon.GetComponent<BalloonAppearance> ();
-			balloonAppearance.direction = new Vector2 (0, 1);
-			balloonAppearance.speed = new Vector2 (0, 6f);
-			balloonAppearance.accel = 0.0f;
-			balloon.SetActive (true);
-
-            int balloonVariety = Random.Range(0, 100);
-			if ( yellowThreshold > balloonVariety && balloonVariety > greenThreshold) {
-				balloonAppearance.setSprite((Sprite)Resources.Load ("Textures/greenballoon", typeof(Sprite)));
-                balloonAppearance.speed = new Vector2(0, 10f);
-				balloonAppearance.deflateRate = .002f;
-                balloon.name = "SpeedBalloon";
-			} else if(balloonVariety > yellowThreshold) {
-                balloonAppearance.setSprite((Sprite)Resources.Load("Textures/yellowballoon", typeof(Sprite)));
-                balloonAppearance.speed = new Vector2(0, 8f);
-                balloonAppearance.deflateRate = .002f;
-                balloon.name = "JumpBalloon";
-            } else {
-				balloonAppearance.setSprite((Sprite)Resources.Load ("Textures/redballoon", typeof(Sprite)));
-				balloonAppearance.deflateRate = .001f;
-			}
-
-			spawnedBalloons.Add (balloon);
-
-			balloonIterator++;
-			if (balloonIterator >= 4) {
-				balloonIterator = 0;
-				forward = !forward;
-				balloonPositions = getBalloonPositions ();
-			}
-			updateCounter = 0;
-		}
-		
-		var dist = (player.transform.position - Camera.main.transform.position).z;
-		bottomBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).y;
-		this.transform.position = new Vector3 (Cam.transform.position.x, bottomBorder, dist);
-	}
-
-
 }
-
 

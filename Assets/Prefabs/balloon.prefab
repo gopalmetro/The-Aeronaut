@@ -140,10 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f562e2d83b56e44b2ec80838d4aa06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isVisible: 0
-  hasBecomeVisible: 0
-  curSprite: {fileID: 0}
-  isGreen: 0
+  deflateRate: 0
+  speed: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  accel: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

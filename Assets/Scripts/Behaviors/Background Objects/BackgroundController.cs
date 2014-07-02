@@ -18,13 +18,9 @@ public class BackgroundController : MonoBehaviour {
         LoadImages(backgrounds);
 
         for (int i = 0; i <= 2; i++) {
-
-            GameObject newBackground = Instantiate(backgroundPrefab) as GameObject;
-		
-
-			newBackground.GetComponent<Background>().setSprite(backgrounds[0]);
-		
-            newBackground.transform.parent = this.transform;
+			GameObject newBackground = Instantiate(backgroundPrefab) as GameObject;
+		    newBackground.GetComponent<Background>().setSprite(backgrounds[0]);
+		    newBackground.transform.parent = this.transform;
             newBackground.GetComponent<Background>().setIndex(0);
             newBackground.GetComponent<Background>().setHeight(i);
             newBackground.GetComponent<Background>().setID((char)(i + 70));
@@ -34,6 +30,7 @@ public class BackgroundController : MonoBehaviour {
 	}
 
     private void onNotification(Notification note) {
+
         BackgroundNotification current = (BackgroundNotification)note;
         Background currentBackground = current.gameObj.GetComponent<Background>();
         List<GameObject> tempBackgroundParts = new List<GameObject>();
@@ -48,14 +45,12 @@ public class BackgroundController : MonoBehaviour {
         }
 
         if (currentHeight < heightToBeginTransition) {
-            
             tempBackgroundParts[1].GetComponent<Background>().setIndex(0);
             tempBackgroundParts[1].GetComponent<Background>().setSprite(backgrounds[0]);
             tempBackgroundParts[1].GetComponent<Background>().setHeight(currentHeight + 1);
             tempBackgroundParts[0].GetComponent<Background>().setIndex(0);
             tempBackgroundParts[0].GetComponent<Background>().setSprite(backgrounds[0]);
             tempBackgroundParts[0].GetComponent<Background>().setHeight(currentHeight - 1);
-            
         }
         else if (currentHeight  >= heightToBeginTransition && currentHeight < heightToBeginSpaceTransition - 1) {
 
