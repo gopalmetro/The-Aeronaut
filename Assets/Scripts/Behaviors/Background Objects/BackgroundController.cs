@@ -38,7 +38,6 @@ public class BackgroundController : MonoBehaviour {
         Background currentBackground = current.gameObj.GetComponent<Background>();
         List<GameObject> tempBackgroundParts = new List<GameObject>();
         int currentIndex = currentBackground.getIndex();
-        Debug.Log(currentIndex);
         int currentHeight = currentBackground.getHeight();
         foreach (GameObject a in backgroundParts) {
             

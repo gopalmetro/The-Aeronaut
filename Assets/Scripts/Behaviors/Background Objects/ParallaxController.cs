@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ParallaxController : MonoBehaviour {
 
@@ -64,11 +65,14 @@ public class ParallaxController : MonoBehaviour {
                     Player.transform.position.y + foregroundHeightOffset, ForeObject.transform.position.z);
                 spawnCounter++;
             }
-            if (spawnTimer > 20 && spawnCounter == 2) {
+            if (spawnTimer > 20 && spawnCounter == 2 && spaceBackgroundObjects != null) {
                 GameObject BackObject;
                 int secondIndex = Random.Range(0, spaceBackgroundObjects.Length);
                 spawnCounter++;
                 BackObject = (GameObject)Instantiate(spaceBackgroundObjects[secondIndex] as GameObject);
+                List<GameObject> temp = new List<GameObject>(spaceBackgroundObjects);
+                temp.RemoveAt(secondIndex);
+                spaceBackgroundObjects = temp.ToArray();
                 BackObject.transform.parent = this.transform;
                 BackObject.transform.position = new Vector3(Random.Range(-10, 10),
                     Player.transform.position.y + backgroundHeightOffset, BackObject.transform.position.z);
