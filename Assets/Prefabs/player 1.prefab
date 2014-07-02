@@ -60,7 +60,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .150000006, y: .319999993}
+  m_Size: {x: .150000006, y: .200000003}
   m_Center: {x: 0, y: 0}
 --- !u!95 &9500000
 Animator:
@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a794bfc9e61db148b9e0530d09a383c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newDeflateRate: .00600000005
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -746,8 +746,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .150000006, y: .319999993}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: .150000006, y: .100000001}
+  m_Center: {x: 0, y: -.109999999}
 --- !u!212 &1051853273
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1231,9 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloon: {fileID: 100000, guid: d66533b505ccad149a6a02b38abb1a2d, type: 2}
-  balloonPool: 500
-  updateCounter: 0
-  distance: 10
+  balloonPoolCount: 500
 --- !u!1001 &1921223370
 Prefab:
   m_ObjectHideFlags: 0
@@ -1421,6 +1419,18 @@ Prefab:
     - target: {fileID: 100000, guid: e972ebd55bdb8bf4f8c2464293ec01c3, type: 2}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: e972ebd55bdb8bf4f8c2464293ec01c3, type: 2}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: e972ebd55bdb8bf4f8c2464293ec01c3, type: 2}
+      propertyPath: m_Center.y
+      value: -.109999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: e972ebd55bdb8bf4f8c2464293ec01c3, type: 2}
+      propertyPath: m_Size.y
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e972ebd55bdb8bf4f8c2464293ec01c3, type: 2}
