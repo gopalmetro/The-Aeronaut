@@ -46,3 +46,11 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Platforms
+    userID: 1
+    uniqueID: 3053698767
+    locked: 0
+  - name: Player
+    userID: 2
+    uniqueID: 3032582683
+    locked: 0

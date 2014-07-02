@@ -45,6 +45,7 @@ public class Jump : MonoBehaviour {
         }
     }
 
+
     public void balloonPowerUps(Collision2D other) {
         if (other.gameObject.name == "JumpBalloon") {
             //this.rigidbody2D.velocity += new Vector2(0, 10);

@@ -7,10 +7,12 @@ public class BalloonAppearance : MonoBehaviour {
 	public Vector2 speed;
 	public Vector2 direction;
 	public float accel;
+    public BoxCollider2D platform;
 
 	private readonly float KCollisionDeflateRate = 0.006f;
 	private Vector3 KOriginalScale;
 	private float KNormalDeflateRate;
+    private bool oneWay = true;
 
 	void Start () {
 		KOriginalScale = this.transform.localScale;
@@ -18,6 +20,13 @@ public class BalloonAppearance : MonoBehaviour {
 	}
 
 	void Update () {
+
+        if (oneWay) {
+            platform.enabled = true;
+        }
+        else {
+            platform.enabled = false;
+        }
 
 		if (transform.localScale.x >= 0) {
 			Vector3 reduce = new Vector3 (deflateRate, deflateRate, 0);
@@ -59,8 +68,16 @@ public class BalloonAppearance : MonoBehaviour {
 			Physics2D.IgnoreCollision (this.gameObject.collider2D, other.gameObject.collider2D);
 		}
 	}
+
+    public void OnTriggerStay2D(Collider2D other) {
+        if (other.gameObject.tag == "Player") {
+            oneWay = false;
+        }
+    }
 	
-	public void OnTriggerEnter2D (Collider2D other) {
+	public void OnTriggerExit2D (Collider2D other) {
+        if (other.gameObject.tag == "Player") {
+            oneWay = true;
+        }
 	}
-	
 }
