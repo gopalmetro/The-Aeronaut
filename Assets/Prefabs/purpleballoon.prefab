@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
+  - 61: {fileID: 6100000}
   m_Layer: 0
   m_Name: purpleballoon
   m_TagString: platform
@@ -112,6 +113,17 @@ PolygonCollider2D:
       - {x: .379999995, y: -1.22500002}
       - {x: .599999964, y: -1.18499994}
       - {x: .680000007, y: -1.16499996}
+--- !u!61 &6100000
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +179,7 @@ MonoBehaviour:
   speed: {x: 0, y: 5}
   direction: {x: 0, y: 1}
   accel: 0
+  platform: {fileID: 6100000}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
