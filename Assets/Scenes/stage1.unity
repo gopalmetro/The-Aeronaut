@@ -783,6 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
+  jumpConstant: 1
 --- !u!114 &1051853277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,7 +1593,7 @@ Prefab:
       value: .150000006
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 11400000, guid: e972ebd55bdb8bf4f8c2464293ec01c3, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: e972ebd55bdb8bf4f8c2464293ec01c3, type: 2}
   m_RootGameObject: {fileID: 1051853269}
   m_IsPrefabParent: 0
