@@ -21,7 +21,7 @@ public class BalloonAppearance : MonoBehaviour {
 
 	void Update () {
 
-        if (oneWay) {
+        if (oneWay && platform) {
             platform.enabled = true;
         }
         else {
