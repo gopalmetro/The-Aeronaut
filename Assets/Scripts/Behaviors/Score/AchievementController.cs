@@ -3,24 +3,28 @@ using System.Collections;
 
 public class AchievementController : MonoBehaviour {
 
-    public Texture2D image = null;
+    public GUIText AwesomeImage = null;
+    public GUIText YellowPowerUp = null;
+    public GUIText GreenPowerUp = null;
 
     private static AchievementController scoreManager = null;
     private int score = 0;
     private int messageTimer;
-    private bool messageIsVisible;
 
     void Start() {
         DontDestroyOnLoad(this);
         messageTimer = 0;
         NotificationCenter.defaultCenter.addListener(onReceiveMessageSetMessageVisible, NotificationType.OnAchievableEvent);
+        AwesomeImage.gameObject.SetActive(false);
+        YellowPowerUp.gameObject.SetActive(false);
+        GreenPowerUp.gameObject.SetActive(false);
     }
 
     void Update() {
         messageTimer++;
         if (messageTimer > 120) {
             messageTimer = 0;
-            setMessageInvisible();
+            setRewardInvisible();
         }
         checkForNewHighScore();
     }
@@ -30,13 +34,6 @@ public class AchievementController : MonoBehaviour {
             scoreManager = new AchievementController();
         }
         return scoreManager;
-    }
-
-    void OnGUI() {
-        if (messageIsVisible) {
-            GUI.backgroundColor = new Color(0, 0, 0, 0);
-            GUI.Button(new Rect(Screen.width / 2, Screen.height / 2, 200, 200), image);
-        }
     }
 
     public int getScore() {
@@ -52,12 +49,13 @@ public class AchievementController : MonoBehaviour {
         this.score += score;
     }
 
-    public void setMessageVisible() {
-        messageIsVisible = true;
+    public void setRewardVisible() {
+        AwesomeImage.gameObject.SetActive(true);
+        AwesomeImage.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, this.transform.position.z);
     }
 
-    public void setMessageInvisible() {
-        messageIsVisible = false;
+    public void setRewardInvisible() {
+        AwesomeImage.gameObject.SetActive(false);
     }
 
     public void checkForNewHighScore() {
@@ -76,8 +74,7 @@ public class AchievementController : MonoBehaviour {
         return PlayerPrefs.GetInt("Score");
     }
 
-    public void onReceiveMessageSetMessageVisible(Notification note)
-    {
-        setMessageVisible();
+    public void onReceiveMessageSetMessageVisible(Notification note) {
+        setRewardVisible();
     }
 }

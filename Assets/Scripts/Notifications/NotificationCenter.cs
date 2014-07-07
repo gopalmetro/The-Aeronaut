@@ -7,13 +7,15 @@
 using UnityEngine;
 using System.Collections;
 
-public enum NotificationType {
-	OnEvent,
-	OnPowerUp,
-	OnAchievableEvent,
-	BalloonPop,
-	BackgroundObjectNotification,
-	TotalNotifications
+public enum NotificationType
+{
+    OnEvent,
+    OnPowerUp,
+    OnAchievableEvent,
+    BalloonPop,
+    BackgroundObjectNotification,
+    Death,
+    TotalNotifications,
 }
 ;
 

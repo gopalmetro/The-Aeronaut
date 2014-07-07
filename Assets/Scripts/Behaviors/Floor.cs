@@ -18,7 +18,8 @@ public class Floor : MonoBehaviour {
             Physics2D.IgnoreCollision(other.gameObject.collider2D, this.gameObject.collider2D);
         }
         if (other.gameObject.tag == "Player" && !firstTimeVisible) {
-            Application.LoadLevel("losescreen");
+            Notification Death = new Notification(NotificationType.Death);
+            NotificationCenter.defaultCenter.postNotification(Death);
         }
     }
 }

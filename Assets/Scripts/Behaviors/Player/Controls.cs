@@ -2,12 +2,21 @@
 using System.Collections;
 
 public class Controls : MonoBehaviour {
+
+    public bool gameOver = false;
+
+    void Start() {
+        NotificationCenter.defaultCenter.addListener(onDeath, NotificationType.Death);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		this.keyboardControls ();
-		this.iOSControls ();
-		this.mouseControls ();
+
+        if (!gameOver) {
+            this.keyboardControls();
+            this.iOSControls();
+            this.mouseControls();
+        }
 	}
 
 	void mouseControls () {
@@ -59,4 +68,8 @@ public class Controls : MonoBehaviour {
 		}
 
 	}
+
+    private void onDeath(Notification Note) {
+        this.gameOver = true;
+    }
 }
