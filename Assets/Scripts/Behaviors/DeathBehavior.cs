@@ -28,12 +28,13 @@ public class DeathBehavior : MonoBehaviour {
                 Notification Death = new Notification(NotificationType.Death);
                 NotificationCenter.defaultCenter.postNotification(Death);
             }
-            Debug.Log(textureColor.a);
+            //Debug.Log(textureColor.a);
         }
         else if (!gameOver) {
             textureColor.a = 0;
             guiTexture.color = textureColor;
         }
+
 	}
 
     private void onDeath(Notification Note)  {
