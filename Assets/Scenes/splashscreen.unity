@@ -123,7 +123,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .129411772, g: .623529434, b: .717647076, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -141,8 +141,11 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
 --- !u!4 &12253902
 Transform:
   m_ObjectHideFlags: 0
@@ -154,6 +157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &262365718
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +198,7 @@ Transform:
   - {fileID: 1855115356}
   - {fileID: 385908019}
   m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &385908018
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +227,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 262365720}
+  m_RootOrder: 1
 --- !u!82 &385908020
 AudioSource:
   m_ObjectHideFlags: 0
@@ -338,9 +344,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d3cf1b05d061c49478ef5202a2fb868e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1684332139
@@ -350,10 +355,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1684332136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .186372757, y: -.0135018826, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -.0153572261, y: .00483709574, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &1855115355
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 262365720}
+  m_RootOrder: 0
 --- !u!114 &1855115357
 MonoBehaviour:
   m_ObjectHideFlags: 0

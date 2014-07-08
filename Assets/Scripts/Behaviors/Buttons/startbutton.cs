@@ -8,7 +8,7 @@ public class startbutton : MonoBehaviour {
 
     void OnGUI() {
         GUI.skin = GUIskin;
-        if (GUI.Button(new Rect(Screen.width / 2 + 50, Screen.height / 2 + 250, buttonimage.width +100, buttonimage.height +100), buttonimage)) {
+		if (GUI.Button(new Rect(Screen.width*.07f, Screen.height*.72f, buttonimage.width + Screen.width/7, buttonimage.height + Screen.width/7), buttonimage)) {
             Application.LoadLevel("stage1");
         }
     }

@@ -6,6 +6,8 @@ public class Jump : MonoBehaviour {
 	public float playerSpeed = 5;
     public float jumpConstant = 1;
 	private bool playerGrounded = true;
+	public bool rightMovementAllowed = true;
+	public bool leftMovementAllowed = true;
 	private int playerJumpHeight = 500;
    
 	public void setGrounded (bool ground) {
@@ -23,13 +25,19 @@ public class Jump : MonoBehaviour {
 	}
 
 	public void xAxisMvmtRight () {
-		transform.position += Vector3.right * playerSpeed * Time.deltaTime;
-		this.GetComponent<AnimationController> ().faceRight ();
+		if (rightMovementAllowed) {
+			transform.position += Vector3.right * playerSpeed * Time.deltaTime;
+			this.GetComponent<AnimationController> ().faceRight ();
+			leftMovementAllowed = true;
+		}
 	}
 
 	public void xAxisMvmtLeft () {
-		transform.position -= Vector3.right * playerSpeed * Time.deltaTime;
-		this.GetComponent<AnimationController> ().faceLeft ();
+		if (leftMovementAllowed) {
+			transform.position -= Vector3.right * playerSpeed * Time.deltaTime;
+			this.GetComponent<AnimationController> ().faceLeft ();
+			rightMovementAllowed = true;
+		}
 	}
 
 	public void rest () {

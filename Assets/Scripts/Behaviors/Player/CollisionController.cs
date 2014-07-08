@@ -7,24 +7,38 @@ public class CollisionController : MonoBehaviour {
     private Jump jump;
     private Controls controls;
     private string previousBalloon;
+	private float distance;
+	private float leftBorder;
+	private float rightBorder;
+	private Rigidbody2D playerBody;
 
 
 	void Start () {
 		DontDestroyOnLoad (this);
         jump = this.GetComponent<Jump>();
         controls = this.GetComponent<Controls>();
+		playerBody = this.gameObject.GetComponent<Rigidbody2D> ();
+
+		distance = (transform.position - Camera.main.transform.position).z;
+		leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0,0,distance)).x;
+		rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1,0,distance)).x;
+
 	}
+
 	void FixedUpdate () {
 		checkIfOutOfBounds ();
 	}
 
 	void checkIfOutOfBounds () {
-		if (transform.position.x >= 10.01) {
-			transform.position = new Vector3 (10.01f, transform.position.y, transform.position.z);
-		}
-		if (transform.position.x < -10) {
-			transform.position = new Vector3 (-10, transform.position.y, transform.position.z);
-		}
+
+		if (transform.position.x + this.renderer.bounds.size.x >= rightBorder) {
+						//transform.position = new Vector3 ( rightBorder - 1f, transform.position.y, transform.position.z);
+						jump.rightMovementAllowed = false;
+		} 
+		if (transform.position.x - this.renderer.bounds.size.x <= leftBorder) {
+						//transform.position = new Vector3 ( leftBorder + 1f, transform.position.y, transform.position.z);					
+			jump.leftMovementAllowed = false;
+		} 
 
 		if (rigidbody2D.velocity.y < -3) {
 			rigidbody2D.velocity -= new Vector2 (rigidbody2D.velocity.x, .1f);

@@ -203,6 +203,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 815029818}
   - 212: {fileID: 815029817}
+  - 114: {fileID: 815029819}
   m_Layer: 0
   m_Name: start_screen_bg_iphone4
   m_TagString: Untagged
@@ -244,6 +245,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 614965800}
   m_RootOrder: 0
+--- !u!114 &815029819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815029816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d518b02de8e44028c183c8ff7f6120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &816384289
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +299,7 @@ MonoBehaviour:
   background: {fileID: 2800000, guid: 2bcf655a0acc37240bd059f4dea1afb0, type: 3}
   button: {fileID: 2800000, guid: 3260cd7e515640444806db6108361b0b, type: 3}
   controller: Sound Effects
-  posY: -50
+  posY: -25
 --- !u!1 &963145063
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +414,7 @@ MonoBehaviour:
   background: {fileID: 2800000, guid: 2bcf655a0acc37240bd059f4dea1afb0, type: 3}
   button: {fileID: 2800000, guid: d6f6f08c1f6abcf4ab8318bd1a388ec4, type: 3}
   controller: Background Music
-  posY: 50
+  posY: 75
 --- !u!1 &1342674160
 GameObject:
   m_ObjectHideFlags: 0

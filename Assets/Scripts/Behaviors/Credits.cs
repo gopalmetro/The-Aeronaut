@@ -9,6 +9,7 @@ public class Credits : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.transform.position = new Vector3(.5f, this.transform.position.y, this.transform.position.z);
         GUIText tc = this.GetComponent<GUIText>();
         string creds = "Chielo Zimmerman \n";
         creds += "David Wert \n";
@@ -16,6 +17,7 @@ public class Credits : MonoBehaviour {
         creds += "Coshx Labs \n";
 
         tc.text = creds;
+		tc.fontSize = (int)(Screen.width * .1f);
 	}
 	
 	// Update is called once per frame
@@ -23,7 +25,7 @@ public class Credits : MonoBehaviour {
         if (!crawling)
             return;
         transform.Translate(Vector3.up * Time.deltaTime * speed);
-        if (gameObject.transform.position.y > .8) {
+        if (gameObject.transform.position.y > .6f) {
             crawling = false;
         }
 	}
