@@ -85,7 +85,7 @@ public class BackgroundController : MonoBehaviour {
 			}
 
 		} catch (MissingReferenceException e) {
-			//stale notification
+			//Debug.Log ("BackgroundController - onNotification: caught Exception from stale notification ");
 		}
 
 	}
