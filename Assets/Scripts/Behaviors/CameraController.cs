@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 
-//This class handles parallax
 public class CameraController : MonoBehaviour {
 
 	private GameObject Player;
-    private GameObject Cam;
-    private bool loss = false;
+	private GameObject Cam;
 
-	void Start() {
-		Cam = GameObject.Find("Main Camera");
-		Player = GameObject.Find("player");
+	private readonly float startingCameraYPosition = 0f;
+
+	void Start () {
+		Cam = GameObject.Find ("Main Camera");
+		Player = GameObject.Find ("player");
 	}
-
+	
 	void Update () {
-        if (!loss) {
-            Cam.transform.position = new Vector3(Cam.transform.position.x, Player.transform.position.y, Cam.transform.position.z);
-        }
-    }
+		float playerHeight = Player.GetComponent<Renderer> ().bounds.size.y;
+		float cameraYPosition;
+		if (Player.transform.position.y > startingCameraYPosition) {
+			cameraYPosition =  Player.transform.position.y ;
+		} else {
+			cameraYPosition = startingCameraYPosition;
+		}
+		Cam.transform.position = new Vector3 (Cam.transform.position.x, cameraYPosition, Cam.transform.position.z);
+	}
 }
