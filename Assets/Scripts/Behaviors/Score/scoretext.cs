@@ -9,6 +9,7 @@ public class scoretext : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         scorer = GameObject.Find("Scorer").GetComponent<AchievementController>();
+
 	}
 	
 	// Update is called once per frame
