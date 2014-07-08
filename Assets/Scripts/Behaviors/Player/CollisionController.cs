@@ -31,12 +31,10 @@ public class CollisionController : MonoBehaviour {
 
 	void checkIfOutOfBounds () {
 
-		if (transform.position.x + this.renderer.bounds.size.x >= rightBorder) {
-						//transform.position = new Vector3 ( rightBorder - 1f, transform.position.y, transform.position.z);
-						jump.rightMovementAllowed = false;
+		if (transform.position.x + this.renderer.bounds.size.x/2 >= rightBorder) {
+			jump.rightMovementAllowed = false;
 		} 
-		if (transform.position.x - this.renderer.bounds.size.x <= leftBorder) {
-						//transform.position = new Vector3 ( leftBorder + 1f, transform.position.y, transform.position.z);					
+		if (transform.position.x - this.renderer.bounds.size.x/2 <= leftBorder) {				
 			jump.leftMovementAllowed = false;
 		} 
 
