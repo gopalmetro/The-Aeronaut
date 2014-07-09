@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10911394c19398344a58af9fd110a68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hSliderValue: .75
   GUISkin: {fileID: 11400000, guid: f2053886c536e5448ad78d56771a9a0b, type: 2}
   background: {fileID: 2800000, guid: 2bcf655a0acc37240bd059f4dea1afb0, type: 3}
   button: {fileID: 2800000, guid: 3260cd7e515640444806db6108361b0b, type: 3}
@@ -410,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10911394c19398344a58af9fd110a68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hSliderValue: .75
   GUISkin: {fileID: 11400000, guid: 35369c0564307144ab9058be55dd13cb, type: 2}
   background: {fileID: 2800000, guid: 2bcf655a0acc37240bd059f4dea1afb0, type: 3}
   button: {fileID: 2800000, guid: d6f6f08c1f6abcf4ab8318bd1a388ec4, type: 3}

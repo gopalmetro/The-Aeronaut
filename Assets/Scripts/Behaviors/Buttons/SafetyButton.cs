@@ -16,7 +16,7 @@ public class SafetyButton : MonoBehaviour {
     }
     //GUI specific actions
     void OnGUI() {
-        if (GUI.Button(new Rect(Screen.width * .68f, Screen.height * .03f, 100, 50), "Safety Balloon Count: " + purpcount)) {
+        if (GUI.Button(new Rect(Screen.width - 105, Screen.height * .03f, 100, 50), "Safety Balloon Count: " + purpcount)) {
             spawnPurpleBalloon();
         }
     }

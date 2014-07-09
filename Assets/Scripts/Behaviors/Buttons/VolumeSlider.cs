@@ -3,7 +3,7 @@ using System.Collections;
 
 public class VolumeSlider : MonoBehaviour {
 
-	float hSliderValue = .75f;
+	public float hSliderValue = .75f;
     public GUISkin GUISkin = null;
     public Texture2D background = null;
     public Texture2D button = null;
@@ -32,11 +32,12 @@ public class VolumeSlider : MonoBehaviour {
     }
 
     void OnGUI() {
+
         GUI.skin = GUISkin;
 
         GUI.skin.horizontalScrollbar.fixedWidth = 200;
         hSliderValue = GUI.HorizontalSlider (new Rect (Screen.width / 2 - background.width / 4, Screen.height / 4 - posY, 
-            background.width / 2, background.height), hSliderValue, 0, 1.0f, slider, thumbnail);
+            background.width / 2 , background.height), hSliderValue, 0, 1.0f, slider, thumbnail);
         if (GameObject.Find("Sounds") != null) {
             GameObject aud = GameObject.Find(controller);
             aud.GetComponent<AudioSource>().volume = hSliderValue;

@@ -9,8 +9,9 @@ public class return_to_settings : MonoBehaviour {
     void OnGUI()
     {
         GUI.skin = GUIskin;
-        if (GUI.Button(new Rect(Screen.width * .8f, Screen.height * .01f, optionsimage.width - optionsimage.width / 4,
-            optionsimage.height - optionsimage.height / 4), optionsimage)) {
+		float constant = optionsimage.height / 3 - Screen.width / 27;
+        if (GUI.Button(new Rect(Screen.width * .75f, Screen.height * .03f, optionsimage.width - constant,
+            optionsimage.height - constant), optionsimage)) {
             Application.LoadLevel("settingsscreen");
         }
     }
