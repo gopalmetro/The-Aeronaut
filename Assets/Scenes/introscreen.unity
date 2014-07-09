@@ -623,6 +623,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1238497084}
   - 132: {fileID: 1238497085}
+  - 114: {fileID: 1238497086}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -637,7 +638,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1238497083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .484815627, y: -2.82188606, z: 0}
+  m_LocalPosition: {x: .472052902, y: -2.82188606, z: 0}
   m_LocalScale: {x: .909090877, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1790325452}
@@ -665,6 +666,17 @@ GUIText:
     rgba: 4284564233
   m_PixelCorrect: 1
   m_RichText: 0
+--- !u!114 &1238497086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1238497083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c493d655ab64f549416c93e172d48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256767050
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +984,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1567021927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .762483597, y: -14.108325, z: -5}
+  m_LocalPosition: {x: .762483597, y: -13.8999996, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1135853366}
@@ -988,6 +1000,7 @@ GameObject:
   - 4: {fileID: 1659628451}
   - 132: {fileID: 1659628452}
   - 114: {fileID: 1659628453}
+  - 114: {fileID: 1659628454}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -1039,6 +1052,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 924a09bc8c94eb74b861638a1118418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1659628454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659628450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c493d655ab64f549416c93e172d48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1790325451
