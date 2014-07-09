@@ -75,8 +75,9 @@ public class BalloonSpawner : MonoBehaviour {
 
 	private void onDeath (Notification Note) {
 		this.gameOver = true;
+
 		foreach (GameObject obj in spawnedBalloons) {
-			Physics2D.IgnoreCollision (obj.collider2D, GameObject.Find ("player").collider2D);
+			//Physics2D.IgnoreCollision (obj.collider2D, GameObject.Find ("player").collider2D);
 		}
 	}
 
