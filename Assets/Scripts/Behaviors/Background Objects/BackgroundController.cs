@@ -31,62 +31,64 @@ public class BackgroundController : MonoBehaviour {
 
 	private void onNotification (Notification note) {
 		BackgroundNotification current = (BackgroundNotification)note;
-
 		try {
-			Background currentBackground = current.gameObj.GetComponent<Background> ();
-			List<GameObject> tempBackgroundParts = new List<GameObject> ();
-			int currentIndex = currentBackground.getIndex ();
-			int currentHeight = currentBackground.getHeight ();
+			try {
+				Background currentBackground = current.gameObj.GetComponent<Background> ();
+				List<GameObject> tempBackgroundParts = new List<GameObject> ();
+				int currentIndex = currentBackground.getIndex ();
+				int currentHeight = currentBackground.getHeight ();
 
-			foreach (GameObject a in backgroundParts) {
+				foreach (GameObject a in backgroundParts) {
             		
-				if (a.GetComponent<Background> ().id != currentBackground.id) {
-					a.GetComponent<Background> ().isCenter = false;
-					tempBackgroundParts.Add (a);
-				}
-			}
-
-			if (currentHeight < heightToBeginTransition) {
-				tempBackgroundParts [1].GetComponent<Background> ().setIndex (0);
-				tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [0]);
-				tempBackgroundParts [1].GetComponent<Background> ().setHeight (currentHeight + 1);
-				tempBackgroundParts [0].GetComponent<Background> ().setIndex (0);
-				tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [0]);
-				tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
-			} else if (currentHeight >= heightToBeginTransition && currentHeight < heightToBeginSpaceTransition - 1) {
-
-				if (currentIndex - 1 < 0) {
-					tempBackgroundParts [0].GetComponent<Background> ().setIndex (currentIndex);
-					tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [currentIndex]);
-					tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
-				} else {
-					tempBackgroundParts [0].GetComponent<Background> ().setIndex (currentIndex - 1);
-					tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [currentIndex - 1]);
-					tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
+					if (a.GetComponent<Background> ().id != currentBackground.id) {
+						a.GetComponent<Background> ().isCenter = false;
+						tempBackgroundParts.Add (a);
+					}
 				}
 
-				if (currentIndex + 1 < backgrounds.Count) {
-					tempBackgroundParts [1].GetComponent<Background> ().setIndex (currentIndex + 1);
-					tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [currentIndex + 1]);
+				if (currentHeight < heightToBeginTransition) {
+					tempBackgroundParts [1].GetComponent<Background> ().setIndex (0);
+					tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [0]);
 					tempBackgroundParts [1].GetComponent<Background> ().setHeight (currentHeight + 1);
+					tempBackgroundParts [0].GetComponent<Background> ().setIndex (0);
+					tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [0]);
+					tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
+				} else if (currentHeight >= heightToBeginTransition && currentHeight < heightToBeginSpaceTransition - 1) {
+
+					if (currentIndex - 1 < 0) {
+						tempBackgroundParts [0].GetComponent<Background> ().setIndex (currentIndex);
+						tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [currentIndex]);
+						tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
+					} else {
+						tempBackgroundParts [0].GetComponent<Background> ().setIndex (currentIndex - 1);
+						tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [currentIndex - 1]);
+						tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
+					}
+
+					if (currentIndex + 1 < backgrounds.Count) {
+						tempBackgroundParts [1].GetComponent<Background> ().setIndex (currentIndex + 1);
+						tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [currentIndex + 1]);
+						tempBackgroundParts [1].GetComponent<Background> ().setHeight (currentHeight + 1);
+					} else {
+						tempBackgroundParts [1].GetComponent<Background> ().setIndex (currentIndex);
+						tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [currentIndex]);
+						tempBackgroundParts [1].GetComponent<Background> ().setHeight (currentHeight + 1);
+					}
+
 				} else {
-					tempBackgroundParts [1].GetComponent<Background> ().setIndex (currentIndex);
-					tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [currentIndex]);
+					tempBackgroundParts [1].GetComponent<Background> ().setIndex (backgrounds.Count - 1);
+					tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [backgrounds.Count - 1]);
 					tempBackgroundParts [1].GetComponent<Background> ().setHeight (currentHeight + 1);
+					tempBackgroundParts [0].GetComponent<Background> ().setIndex (backgrounds.Count - 1);
+					tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [backgrounds.Count - 1]);
+					tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
 				}
 
-			} else {
-				tempBackgroundParts [1].GetComponent<Background> ().setIndex (backgrounds.Count - 1);
-				tempBackgroundParts [1].GetComponent<Background> ().setSprite (backgrounds [backgrounds.Count - 1]);
-				tempBackgroundParts [1].GetComponent<Background> ().setHeight (currentHeight + 1);
-				tempBackgroundParts [0].GetComponent<Background> ().setIndex (backgrounds.Count - 1);
-				tempBackgroundParts [0].GetComponent<Background> ().setSprite (backgrounds [backgrounds.Count - 1]);
-				tempBackgroundParts [0].GetComponent<Background> ().setHeight (currentHeight - 1);
-			}
+			} catch (MissingReferenceException e) {//unity
+			}//Debug.Log ("BackgroundController - onNotification: caught Exception from stale notification ");}
+		} catch (System.NullReferenceException) {//ios
+		}//Debug.Log ("BackgroundController - onNotification: caught Exception from stale notification ");}
 
-		} catch (MissingReferenceException e) {
-			//Debug.Log ("BackgroundController - onNotification: caught Exception from stale notification ");
-		}
 
 	}
 

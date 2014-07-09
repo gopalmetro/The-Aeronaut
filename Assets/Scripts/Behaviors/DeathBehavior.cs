@@ -23,19 +23,22 @@ public class DeathBehavior : MonoBehaviour {
 				Notification Death = new Notification (NotificationType.Death);
 				NotificationCenter.defaultCenter.postNotification (Death);
 			}
-		}else if (!dead) {
+		} else if (!dead) {
 			fallTimer = maxFallTime;
 			this.setRedAlpha (0f);
 		}
 	}
 
-	public void onDeath(Notification notification) {
+	public void onDeath (Notification notification) {
 		try {
-			this.dead = true;
-			this.setRedAlpha(1f);
-		} catch (MissingReferenceException e){
-			//Debug.Log ("DeathBehavior - onDeath: caught Exception from stale notification ");
-		}
+			try {
+				this.dead = true;
+				this.setRedAlpha (1f);
+			} catch (MissingReferenceException e) { //works with Unity
+			}
+		} catch (System.NullReferenceException) {//works with XCode
+		}//Debug.Log ("BackgroundController - onNotification: caught Exception from stale notification ");}
+
 	}
 
 	private void setRedAlpha (float alpha) {

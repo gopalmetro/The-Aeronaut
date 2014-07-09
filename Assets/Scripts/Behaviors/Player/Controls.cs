@@ -3,20 +3,20 @@ using System.Collections;
 
 public class Controls : MonoBehaviour {
 
-    public bool gameOver = false;
-
-    void Start() {
-        NotificationCenter.defaultCenter.addListener(onDeath, NotificationType.Death);
-    }
+	public bool gameOver = false;
+	private float currentY;
 	
-	// Update is called once per frame
+	void Start () {
+		NotificationCenter.defaultCenter.addListener (onDeath, NotificationType.Death);
+	}
+	
 	void Update () {
 
-        if (!gameOver) {
-            this.keyboardControls();
-            this.iOSControls();
-            this.mouseControls();
-        }
+		if (!gameOver) {
+			this.keyboardControls ();
+			this.iOSControls ();
+			this.mouseControls ();
+		}
 	}
 
 	void mouseControls () {
@@ -43,15 +43,32 @@ public class Controls : MonoBehaviour {
 		}
 
 		Vector3 dir = Vector3.zero;
-		dir.x = Input.acceleration.x;
-		//dir.y = -Input.acceleration.y;
-
+		float deltaX = dir.x = Input.acceleration.x;
+		float deltaY = dir.y = -Input.acceleration.y;
+		
 		if (dir.sqrMagnitude > 1) {
 			dir.Normalize ();
 		}
 
+		dir.y = 0;
+		
 		dir *= Time.deltaTime;
-		transform.position += dir * this.GetComponent<Jump> ().playerSpeed;
+		Vector3 newDir = transform.position;
+		newDir.x += 5 * dir.x * this.GetComponent<Jump> ().playerSpeed;
+		newDir.y = transform.position.y;
+		transform.position = newDir;
+
+
+
+		float difference = 1000 * Mathf.Abs (deltaY - this.currentY);
+
+
+		if (difference > 150) {
+			this.GetComponent<Jump> ().playerJump ();
+			Debug.Log (difference);
+		} 
+
+		this.currentY = deltaY;
 	}
 
 	void keyboardControls () {
@@ -69,7 +86,13 @@ public class Controls : MonoBehaviour {
 
 	}
 
-    private void onDeath(Notification Note) {
-        this.gameOver = true;
-    }
+	private void onDeath (Notification Note) {
+		try {
+			try {
+				this.gameOver = true;
+			} catch (MissingReferenceException e) {//unity
+			}
+		} catch (System.NullReferenceException) {//ios
+		}
+	}
 }

@@ -22,14 +22,23 @@ public class CollisionController : MonoBehaviour {
 		rightBorder = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, distance)).x;
 
 		NotificationCenter.defaultCenter.addListener (onDeath, NotificationType.Death);
-
 	}
 
 	void FixedUpdate () {
 		checkIfOutOfBounds ();
 	}
 
-	void checkIfOutOfBounds () {
+	private void onDeath (Notification Note) {
+		try {
+			try {
+				this.gameOver = true;
+			} catch (MissingReferenceException e) {//unity
+			}
+		} catch (System.NullReferenceException) {//ios
+		}
+	}
+
+	private void checkIfOutOfBounds () {
 
 		if (transform.position.x + this.renderer.bounds.size.x / 2 >= rightBorder) {
 			jump.rightMovementAllowed = false;
@@ -46,32 +55,26 @@ public class CollisionController : MonoBehaviour {
 		}	
 	}
 
-	private void onDeath (Notification Note) {
-		this.gameOver = true;
-		//foreach (Object obj in GameObject.FindGameObjectsWithTag("platform")) {
-		//	Physics.IgnoreCollision(((GameObject)obj).collider2D , GameObject.Find ("player").collider2D);
-	}
-
 	public void OnCollisionEnter2D (Collision2D other) {
 
 		if (!gameOver) {
+			jump.setGrounded (true);
 
 			if (other.gameObject.tag == "floor") {
-				jump.setGrounded (true);
 				jump.jumpConstant = 1f;
 				jump.playerSpeed = 5;
+			
 			} else if (other.gameObject.tag == "platform") {
-
-				jump.setGrounded (true);
-				jump.jumpConstant = 1f;
-				jump.playerSpeed = 5;
-
+			
 				if (other.gameObject.name == "JumpBalloon") {
 					jump.jumpConstant = 2.5f;
 					previousBalloon = other.gameObject.name;
 				} else if (other.gameObject.name == "SpeedBalloon") {
 					jump.playerSpeed = 10;
 					previousBalloon = other.gameObject.name;
+				} else {
+					jump.jumpConstant = 1f;
+					jump.playerSpeed = 5;
 				}
 			}
 
