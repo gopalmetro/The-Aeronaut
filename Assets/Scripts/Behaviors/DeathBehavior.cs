@@ -2,21 +2,20 @@
 using System.Collections;
 
 public class DeathBehavior : MonoBehaviour {
-	
-	private GameObject player;
-	private bool dead;
+
 	private readonly float maxFallTime = 1.5f;
 	private float fallTimer;
-	
+	private bool dead;
+	private GameObject player;
+
 	void Start () {
 		player = GameObject.Find ("player");
 		fallTimer = maxFallTime;
 		dead = false;
 		NotificationCenter.defaultCenter.addListener (onDeath, NotificationType.Death);
 	}
-	
+
 	void Update () {
-		
 		if (falling ()) {
 			this.setRedAlpha (Mathf.Lerp (this.guiTexture.color.a, 1, 0.9f * Time.deltaTime));
 			fallTimer -= Time.deltaTime;
@@ -28,15 +27,13 @@ public class DeathBehavior : MonoBehaviour {
 			fallTimer = maxFallTime;
 			this.setRedAlpha (0f);
 		}
-		
-		
 	}
 
 	public void onDeath(Notification notification) {
 		try {
 			this.dead = true;
 			this.setRedAlpha(1f);
-		} catch (MissingReferenceException){
+		} catch (MissingReferenceException e){
 			//Debug.Log ("DeathBehavior - onDeath: caught Exception from stale notification ");
 		}
 	}
@@ -46,7 +43,7 @@ public class DeathBehavior : MonoBehaviour {
 		temp.a = alpha;
 		this.guiTexture.color = temp;
 	}
-	
+
 	private bool falling () {
 		return player.rigidbody2D.velocity.y < -15;
 	}

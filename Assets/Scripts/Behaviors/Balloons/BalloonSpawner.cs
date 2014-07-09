@@ -10,7 +10,8 @@ public class BalloonSpawner : MonoBehaviour {
 	
 	public GameObject balloon;
 	public int balloonPoolCount = 500;
-	
+	public bool gameOver = false;
+
 	private GameObject Cam;
 	private GameObject player;
 	private GameObject[] balloons;
@@ -33,6 +34,9 @@ public class BalloonSpawner : MonoBehaviour {
 		float zDistance = (player.transform.position - Camera.main.transform.position).z;
 		float bottomOfCamera = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, zDistance)).y ;
 		this.transform.position = new Vector3 (0, bottomOfCamera, zDistance);
+
+		NotificationCenter.defaultCenter.addListener (onDeath, NotificationType.Death);
+
 	}
 	
 	void Awake () {
@@ -42,7 +46,6 @@ public class BalloonSpawner : MonoBehaviour {
 			balloons [i].SetActive (false);
 			balloons [i].transform.parent = transform.parent;
 		}
-		
 	}
 	
 	void Update () {
@@ -69,6 +72,14 @@ public class BalloonSpawner : MonoBehaviour {
 			}   
 		}
 	}
+
+	private void onDeath (Notification Note) {
+		this.gameOver = true;
+		foreach (GameObject obj in spawnedBalloons) {
+			Physics2D.IgnoreCollision (obj.collider2D, GameObject.Find ("player").collider2D);
+		}
+	}
+
 	
 	private void spawnBalloon(float location, BalloonKind balloonKind) {
 
@@ -117,6 +128,10 @@ public class BalloonSpawner : MonoBehaviour {
 
 		}
 		spawnedBalloons.Add (balloon);
+
+		if (gameOver) {
+			Physics2D.IgnoreCollision (balloon.collider2D, GameObject.Find ("player").collider2D);
+		}
 	}
 	
 	private Vector3 getSpawnPosition (float yLocation) {
