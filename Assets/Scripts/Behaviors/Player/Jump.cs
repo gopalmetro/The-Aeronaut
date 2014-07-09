@@ -4,24 +4,21 @@ using System.Collections;
 public class Jump : MonoBehaviour {
 
 	public float playerSpeed = 5;
-    public float jumpConstant = 1;
-	private bool playerGrounded = true;
+	public float jumpConstant = 1;
 	public bool rightMovementAllowed = true;
 	public bool leftMovementAllowed = true;
 	private int playerJumpHeight = 500;
-   
+	private bool playerGrounded = true;
+
 	public void setGrounded (bool ground) {
 		playerGrounded = ground;
 	}
 
 	public void playerJump () {
-        if (isGrounded()) {
-            rigidbody2D.AddForce(new Vector2(0, playerJumpHeight * jumpConstant));
-            setGrounded(false);
-        }
-        else {
-            setGrounded(false);
-        }
+		if (isGrounded ()) {
+			rigidbody2D.AddForce (new Vector2 (0, playerJumpHeight * jumpConstant));
+		} 
+		setGrounded (false);
 	}
 
 	public void xAxisMvmtRight () {
@@ -44,7 +41,7 @@ public class Jump : MonoBehaviour {
 		this.GetComponent<AnimationController> ().faceCenter ();
 	}
 
-    public bool isGrounded() {
-        return playerGrounded;
-    }
+	public bool isGrounded () {
+		return playerGrounded;
+	}
 }
