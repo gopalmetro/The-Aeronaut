@@ -8,8 +8,9 @@ public class return_to_main_menu_button : MonoBehaviour {
 
     void OnGUI() {
         GUI.skin = GUIskin;
-        if (GUI.Button(new Rect(Screen.width*.5f - optionsimage.width/3, Screen.height*.7f, optionsimage.width - optionsimage.width / 3,
-            optionsimage.height -optionsimage.height / 3), optionsimage)) {
+		float constant = optionsimage.height / 3 - Screen.width / 27;
+		if (GUI.Button(new Rect(Screen.width*.5f - ((optionsimage.width-constant)/2), Screen.height*.7f, optionsimage.width - constant,
+		                        optionsimage.height -constant), optionsimage)) {
             Application.LoadLevel("introscreen");
         }
     }
