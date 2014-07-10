@@ -25,7 +25,15 @@ public class Controls : MonoBehaviour {
 			if (touch.phase == TouchPhase.Began) { 
 				this.GetComponent<Jump> ().playerJump (1f);
 			}
+
+			if (screenPoint.origin.x < transform.position.x) {
+				this.GetComponent<Jump> ().xAxisMvmtLeft ();
+			}
+			if (screenPoint.origin.x > transform.position.x) {
+				this.GetComponent<Jump> ().xAxisMvmtRight ();
+			}
 		}
+
 
 		float accelerametorDelta = Mathf.Abs (-Input.acceleration.y - this.lastAccelerationY);
 		if (accelerametorDelta > .15 && this.lastAccelerationY > 0 ) {
