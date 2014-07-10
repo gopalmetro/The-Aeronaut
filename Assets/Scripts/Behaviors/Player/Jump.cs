@@ -7,8 +7,13 @@ public class Jump : MonoBehaviour {
 	public float jumpConstant = 1;
 	public bool rightMovementAllowed = true;
 	public bool leftMovementAllowed = true;
-	private int playerJumpHeight = 500;
+	private int playerJumpHeight = 10;
 	private bool playerGrounded = true;
+	public Vector2 balloonVelocity;
+
+	void Start () {
+		balloonVelocity = Vector2.zero;
+	}
 
 	public void setGrounded (bool ground) {
 		playerGrounded = ground;
@@ -16,9 +21,11 @@ public class Jump : MonoBehaviour {
 
 	public void playerJump () {
 		if (isGrounded ()) {
-			playerGrounded = false ;
-			rigidbody2D.AddForce (new Vector2 (0, playerJumpHeight * jumpConstant));
-		} 
+			playerGrounded = false;
+			rigidbody2D.velocity = new Vector2 (0, balloonVelocity.y + (playerJumpHeight * jumpConstant));
+
+		} else {
+		}
 		setGrounded (false);
 	}
 

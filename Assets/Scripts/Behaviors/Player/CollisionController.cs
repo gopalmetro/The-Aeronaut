@@ -5,12 +5,12 @@ public class CollisionController : MonoBehaviour {
 
 	private float newDeflateRate = .006f;
 	private Jump jump;
-	private string previousBalloon;
 	private float distance;
 	private float leftBorder;
 	private float rightBorder;
 	private Rigidbody2D playerBody;
 	public bool gameOver = false;
+
 
 	void Start () {
 		DontDestroyOnLoad (this);
@@ -65,13 +65,12 @@ public class CollisionController : MonoBehaviour {
 				jump.playerSpeed = 5;
 			
 			} else if (other.gameObject.tag == "platform") {
-			
+				jump.balloonVelocity = other.gameObject.rigidbody2D.velocity;
+
 				if (other.gameObject.name == "JumpBalloon") {
 					jump.jumpConstant = 2.5f;
-					previousBalloon = other.gameObject.name;
 				} else if (other.gameObject.name == "SpeedBalloon") {
 					jump.playerSpeed = 5;
-					previousBalloon = other.gameObject.name;
 				} else {
 					jump.jumpConstant = 1f;
 					jump.playerSpeed = 5;
