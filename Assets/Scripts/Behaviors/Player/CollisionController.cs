@@ -70,7 +70,7 @@ public class CollisionController : MonoBehaviour {
 					jump.jumpConstant = 2.5f;
 					previousBalloon = other.gameObject.name;
 				} else if (other.gameObject.name == "SpeedBalloon") {
-					jump.playerSpeed = 10;
+					jump.playerSpeed = 5;
 					previousBalloon = other.gameObject.name;
 				} else {
 					jump.jumpConstant = 1f;

@@ -16,6 +16,7 @@ public class Jump : MonoBehaviour {
 
 	public void playerJump () {
 		if (isGrounded ()) {
+			playerGrounded = false ;
 			rigidbody2D.AddForce (new Vector2 (0, playerJumpHeight * jumpConstant));
 		} 
 		setGrounded (false);
