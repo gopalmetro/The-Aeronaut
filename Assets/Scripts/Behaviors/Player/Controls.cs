@@ -23,13 +23,13 @@ public class Controls : MonoBehaviour {
 		foreach (Touch touch in Input.touches) {
 			var screenPoint = Camera.main.ScreenPointToRay (touch.position);
 			if (touch.phase == TouchPhase.Began) { 
-				this.GetComponent<Jump> ().playerJump ();
+				this.GetComponent<Jump> ().playerJump (1f);
 			}
 		}
 
 		float accelerametorDelta = Mathf.Abs (-Input.acceleration.y - this.lastAccelerationY);
 		if (accelerametorDelta > .15 && this.lastAccelerationY > 0 ) {
-			this.GetComponent<Jump> ().playerJump ();
+			this.GetComponent<Jump> ().playerJump (1.1f);
 			Debug.Log (accelerametorDelta);
 		}this.lastAccelerationY = -Input.acceleration.y;
 
@@ -45,7 +45,7 @@ public class Controls : MonoBehaviour {
 
 	void keyboardControls () {
 		if (Input.GetButtonDown ("Jump")) { 
-			this.GetComponent<Jump> ().playerJump ();
+			this.GetComponent<Jump> ().playerJump (1f);
 		} else if (Input.GetKey ("right") && Input.GetKey ("left")) {
 			this.GetComponent<Jump> ().rest ();
 		} else if (Input.GetKey ("left")) {

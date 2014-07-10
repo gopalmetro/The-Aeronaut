@@ -19,10 +19,10 @@ public class Jump : MonoBehaviour {
 		playerGrounded = ground;
 	}
 
-	public void playerJump () {
+	public void playerJump (float jumpMultiple) {
 		if (isGrounded ()) {
 			playerGrounded = false;
-			rigidbody2D.velocity = new Vector2 (0, balloonVelocity.y + (playerJumpHeight * jumpConstant));
+			rigidbody2D.velocity = new Vector2 (0, balloonVelocity.y + (jumpMultiple*playerJumpHeight * jumpConstant));
 
 		} else {
 		}
