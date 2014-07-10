@@ -788,6 +788,7 @@ MonoBehaviour:
   jumpConstant: 1
   rightMovementAllowed: 1
   leftMovementAllowed: 1
+  balloonVelocity: {x: 0, y: 0}
 --- !u!114 &1051853277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a794bfc9e61db148b9e0530d09a383c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: 0
 --- !u!95 &1051853279
 Animator:
   serializedVersion: 3
@@ -1337,6 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloon: {fileID: 100000, guid: d66533b505ccad149a6a02b38abb1a2d, type: 2}
   balloonPoolCount: 500
+  gameOver: 0
 --- !u!1001 &1921223370
 Prefab:
   m_ObjectHideFlags: 0
