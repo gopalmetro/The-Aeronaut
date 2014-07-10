@@ -128,19 +128,19 @@ public class BalloonSpawner : MonoBehaviour {
 			balloon.name = "SlowBalloon";
 			break;
 		case BalloonKind.NORMAL:
-			balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/redballoon", typeof(Sprite)));
+			balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/red_sphere", typeof(Sprite)));
 			balloonAppearance.speed = new Vector2 (0, 6f);
 			balloonAppearance.deflateRate = .0f;
 			balloon.name = "NormalBalloon";
 			break;		
 		case BalloonKind.SPEED:
-			balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/greenballoon", typeof(Sprite)));
+			balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/green_sphere", typeof(Sprite)));
 			balloonAppearance.speed = new Vector2 (0, 12f);
 			balloonAppearance.deflateRate = .0f;
 			balloon.name = "SpeedBalloon";
 			break;
 		case BalloonKind.JUMP:
-			balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/yellowballoon", typeof(Sprite)));
+			balloonAppearance.setSprite ((Sprite)Resources.Load ("Textures/yellow_sphere", typeof(Sprite)));
 			balloonAppearance.speed = new Vector2 (0, 8f);
 			balloonAppearance.deflateRate = .0f;
 			balloon.name = "JumpBalloon";
