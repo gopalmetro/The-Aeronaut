@@ -5,6 +5,7 @@ public class scoretext : MonoBehaviour {
 
     private AchievementController scorer;
     public static int score;
+    private int curHighScore = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +16,10 @@ public class scoretext : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         score = scorer.getScore();
-		this.guiText.text = score.ToString ();;
+        if (score > curHighScore) {
+            curHighScore = score;
+        }
+		this.guiText.text = curHighScore.ToString();
 	}
 
     public int getScore() {
