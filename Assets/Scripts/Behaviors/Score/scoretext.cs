@@ -15,7 +15,7 @@ public class scoretext : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         score = scorer.getScore();
-        this.guiText.text = "Score: " + score;
+		this.guiText.text = score.ToString ();;
 	}
 
     public int getScore() {

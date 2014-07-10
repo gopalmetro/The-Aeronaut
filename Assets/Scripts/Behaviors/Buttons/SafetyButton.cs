@@ -31,7 +31,7 @@ public class SafetyButton : MonoBehaviour {
     //GUI specific actions
     void OnGUI() {
         GUI.backgroundColor = new Color(0, 0, 0, 0);
-        if (GUI.Button(new Rect(Screen.width*.8f, Screen.height * .02f, Screen.width/5, lifeContainer[0].height), lifeContainer[purpcount])) {
+        if (GUI.Button(new Rect(Screen.width*.8f, Screen.height * .005f, Screen.width/5, lifeContainer[0].height), lifeContainer[purpcount])) {
             spawnPurpleBalloon();
         }
     }
