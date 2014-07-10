@@ -65,7 +65,7 @@ public class BalloonSpawner : MonoBehaviour {
 		float topOfCamera = Camera.main.ViewportToWorldPoint (new Vector3 (0, 1.5f, zDistance)).y;
 
 		if (isMovingUp ()) {
-			if (numberAbove (topOfCamera) < 5) {
+			if (numberAbove (topOfCamera) < 3) {
 				spawnBalloon (topOfCamera, BalloonKind.ARBITRARY);
 			}  
 			if (numberAbove (topOfCamera, "SlowBalloon") < 1) {
@@ -74,7 +74,7 @@ public class BalloonSpawner : MonoBehaviour {
 		} 
 
 		if (isMovingDown ()) {
-			if (numberBeneath (bottomOfCamera) < 5) {
+			if (numberBeneath (bottomOfCamera) < 4) {
 				spawnBalloon (bottomOfCamera, BalloonKind.ARBITRARY);
 			}    
 			if (numberBeneath (bottomOfCamera, "NormalBalloon") < 1) {
