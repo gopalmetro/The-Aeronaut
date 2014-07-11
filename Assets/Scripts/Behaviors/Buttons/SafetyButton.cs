@@ -6,7 +6,8 @@ public class SafetyButton : MonoBehaviour {
 
     //purple balloon
     public Transform purpleballoon;
-    public int purpcount = 3;
+    public int purpcount = 1;
+	public int guiheight;
 
     private List<Texture2D> lifeContainer;
     private GameObject Player;
@@ -16,6 +17,7 @@ public class SafetyButton : MonoBehaviour {
     void Start() {
         lifeContainer = new List<Texture2D>();
         LoadImages(lifeContainer);
+		guiheight = lifeContainer [0].height;
         Player = GameObject.Find("player");
         scorer = GameObject.Find("Scorer").GetComponent<AchievementController>();
     }

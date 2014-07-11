@@ -2,15 +2,16 @@
 using System.Collections;
 
 public class scoretext : MonoBehaviour {
-
-    private AchievementController scorer;
+	
     public static int score;
     private int curHighScore = 0;
+	private AchievementController scorer;
+	private GameObject lives;
 
 	// Use this for initialization
 	void Start () {
         scorer = GameObject.Find("Scorer").GetComponent<AchievementController>();
-
+		lives = GameObject.Find ("Lives");
 	}
 	
 	// Update is called once per frame
