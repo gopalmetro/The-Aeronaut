@@ -9,9 +9,5 @@ public class ScoreBackground : MonoBehaviour {
 		Score = GameObject.Find ("Score");
 		this.transform.position = Score.transform.position;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
