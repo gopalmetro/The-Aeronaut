@@ -42,9 +42,11 @@ public class CollisionController : MonoBehaviour {
 
 		if (transform.position.x + this.renderer.bounds.size.x / 2 >= rightBorder) {
 			jump.rightMovementAllowed = false;
+			this.transform.position = new Vector3(this.transform.position.x - .5f, this.transform.position.y, this.transform.position.z);
 		} 
 		if (transform.position.x - this.renderer.bounds.size.x / 2 <= leftBorder) {				
 			jump.leftMovementAllowed = false;
+			this.transform.position = new Vector3(this.transform.position.x + .5f, this.transform.position.y, this.transform.position.z);
 		} 
 
 		if (rigidbody2D.velocity.y < -3) {
@@ -79,5 +81,4 @@ public class CollisionController : MonoBehaviour {
 
 		} 
 	}
-    
 }
