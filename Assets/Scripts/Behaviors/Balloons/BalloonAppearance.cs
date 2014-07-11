@@ -9,7 +9,7 @@ public class BalloonAppearance : MonoBehaviour {
 	public float accel;
     public BoxCollider2D platform;
 
-	private readonly float KCollisionDeflateRate = 0.006f;
+	private readonly float KCollisionDeflateRate = 0.01f;
 	private Vector3 KOriginalScale;
 	private float KNormalDeflateRate;
     private bool oneWay = true;
